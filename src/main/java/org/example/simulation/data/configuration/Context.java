@@ -1,39 +1,26 @@
-package org.example.simulation.configuration;
+package org.example.simulation.data.configuration;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.SurfaceType;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Context {
     private final float PROBABILITY_OF_INFECTION = 0.8F;
     private final float TIME_OF_RECOVERY = 1000F;
-    private final int MAP_WIDTH = 1500;
-    private final int MAP_HEIGHT = 1000;
     private final int NUMBER_OF_ANIMALS = 50;
     private final int DELAY = 1;
-    private int stepNumber = 1;
-    private final int MAX_COLOR_VALUE = 255;
-    private final int MIN_COLOR_VALUE = 0;
     private final int COLOR_VALUE_RANGE = 40;
     private final int MAP_GENERATION_SCALE_FACTOR = 2;
+    private final int MAP_WIDTH = 1000;
+    private final int MAP_HEIGHT = 1000;
+    private final int MIN_COLOR_VALUE = 0;
+    private final int MAX_COLOR_VALUE = 255;
+    private int stepNumber = 1;
     private boolean isSimulationOngoing = true;
-    private final List<Animal> population;
-    private SurfaceType[][] map;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
-
-
-    public Context() {
-        this.population = createPopulation();
-    }
-
-    private List<Animal> createPopulation() {
-        return IntStream.range(1, NUMBER_OF_ANIMALS)
-                .mapToObj(index -> new Animal())
-                .collect(Collectors.toList());
-    }
+    private List<Animal> population;
+    private SurfaceType[][] map;
 
     public float getPROBABILITY_OF_INFECTION() {
         return PROBABILITY_OF_INFECTION;
@@ -101,5 +88,9 @@ public class Context {
 
     public String getFilePathOfMapImage() {
         return filePathOfMapImage;
+    }
+
+    public void setPopulation(List<Animal> population) {
+        this.population = population;
     }
 }

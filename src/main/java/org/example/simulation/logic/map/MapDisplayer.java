@@ -1,6 +1,6 @@
-package org.example.simulation.IO;
+package org.example.simulation.logic.map;
 
-import org.example.simulation.configuration.Context;
+import org.example.simulation.data.configuration.Context;
 import org.example.simulation.data.SurfaceType;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class MapDisplayer extends JPanel {
     public void displayMap() {
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 1000);
+        frame.setSize(context.getMAP_WIDTH(), context.getMAP_HEIGHT());
         frame.add(this);
         frame.setVisible(true);
     }
@@ -72,5 +72,9 @@ public class MapDisplayer extends JPanel {
         int MAX_COLOR_VALUR = context.getMAX_COLOR_VALUE();
         int MIN_COLOR_VALUE = context.getMIN_COLOR_VALUE();
         return Math.min(Math.max(color, MIN_COLOR_VALUE), MAX_COLOR_VALUR);
+    }
+
+    private void displayPopulation() {
+
     }
 }

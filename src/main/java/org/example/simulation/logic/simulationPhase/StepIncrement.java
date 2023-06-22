@@ -1,6 +1,6 @@
-package org.example.simulation.phase;
+package org.example.simulation.logic.simulationPhase;
 
-import org.example.simulation.configuration.Context;
+import org.example.simulation.data.configuration.Context;
 
 import java.util.concurrent.TimeUnit;
 

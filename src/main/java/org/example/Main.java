@@ -1,10 +1,12 @@
 package org.example;
 
-import org.example.simulation.IO.MapCreator;
-import org.example.simulation.IO.MapDisplayer;
-import org.example.simulation.configuration.Context;
-import org.example.simulation.phase.*;
-import org.example.simulation.routine.Simulator;
+import org.example.simulation.logic.initialisation.Initializer;
+import org.example.simulation.logic.map.MapCreator;
+import org.example.simulation.logic.map.MapDisplayer;
+import org.example.simulation.data.configuration.Context;
+
+import org.example.simulation.logic.simulationPhase.*;
+import org.example.simulation.logic.routine.Simulator;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +27,8 @@ public class Main {
         );
         MapDisplayer mapDisplayer = new MapDisplayer(context);
         MapCreator mapCreator = new MapCreator(context);
-        Simulator simulator = new Simulator(context, phases, mapCreator);
-        //simulator.simulate();
-        mapCreator.generateMapFromImage(filePathOfMapImage);
-        mapDisplayer.displayMap();
+        Initializer initializer = new Initializer(context, mapCreator, mapDisplayer);
+        Simulator simulator = new Simulator(context, phases, mapCreator, initializer);
+        simulator.simulate();
     }
 }
