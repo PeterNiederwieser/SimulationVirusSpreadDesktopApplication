@@ -2,6 +2,7 @@ package org.example.simulation.logic.initialisation;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
+import org.example.simulation.data.HealthState;
 import org.example.simulation.logic.map.MapCreator;
 import org.example.simulation.logic.map.MapDisplayer;
 
@@ -25,7 +26,16 @@ public class Initializer {
         String filePathOfImage = context.getFilePathOfMapImage();
         mapCreator.generateMapFromImage(filePathOfImage);
         context.setPopulation(getInitializedPopulation());
+        initializeStartingStateOfInfections();
         mapDisplayer.displayMap();
+    }
+
+    private void initializeStartingStateOfInfections() {
+        List<Animal> population = context.getPopulation();
+        int NUMBER_OF_INITIAL_INFECTIONS = context.getNUMBER_OF_INITIAL_INFECTIONS();
+        for (int i = 0; i < NUMBER_OF_INITIAL_INFECTIONS; i++) {
+            population.get(i).setHealthState(HealthState.INFECTED);
+        }
     }
 
     private List<Animal> getInitializedPopulation() {
@@ -36,7 +46,7 @@ public class Initializer {
                 .mapToObj(index -> {
                     int x = getRandomInitialPositionCoordinate(MAP_WITH);
                     int y = getRandomInitialPositionCoordinate(MAP_HEIGHT);
-                    return new Animal(x,y);})
+                    return new Animal(x,y, HealthState.HEALTHY);})
                 .collect(Collectors.toList());
     }
 

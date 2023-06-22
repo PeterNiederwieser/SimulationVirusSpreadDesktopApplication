@@ -1,5 +1,6 @@
 package org.example.simulation.logic.map;
 
+import org.example.simulation.data.Animal;
 import org.example.simulation.data.SurfaceType;
 import org.example.simulation.data.Context;
 
@@ -16,11 +17,11 @@ public class ColorHandler {
         int COLOR_VALUE_RANGE = context.getCOLOR_VALUE_RANGE();
         switch (surfaceType) {
             case WATER:
-                return generateRandomColorInRange(Color.decode(context.getCOLOR_WATER()), COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(context.getCOLOR_WATER(), COLOR_VALUE_RANGE);
             case ACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.decode(context.getCOLOR_ACCESSIBLE_TERRAIN()), COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(context.getCOLOR_ACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
             case INACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.decode(context.getCOLOR_INACCESSIBLE_TERRAIN()), COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(context.getCOLOR_INACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
             default:
                 return Color.WHITE;
         }
@@ -37,5 +38,13 @@ public class ColorHandler {
         int MAX_COLOR_VALUR = context.getMAX_COLOR_VALUE();
         int MIN_COLOR_VALUE = context.getMIN_COLOR_VALUE();
         return Math.min(Math.max(color, MIN_COLOR_VALUE), MAX_COLOR_VALUR);
+    }
+
+    public Color getAnimalColor(Animal animal) {
+        return switch (animal.getHealthState()) {
+            case HEALTHY -> context.getCOLOR_HEALTHY_ANIMAL();
+            case INFECTED -> context.getCOLOR_INFECTED_ANIMAL();
+            case RECOVERED -> context.getCOLOR_RECOVERED_ANIMAL();
+        };
     }
 }

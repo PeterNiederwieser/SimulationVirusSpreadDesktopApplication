@@ -61,7 +61,8 @@ public class MapDisplayer extends JPanel {
         population.forEach(animal -> {
             int x = animal.getX();
             int y = animal.getY();
-            graphics.setColor(Color.ORANGE);
+            Color animalColor = colorHandler.getAnimalColor(animal);
+            graphics.setColor(animalColor);
             graphics.fillOval(x,y,ANIMAL_SIZE,ANIMAL_SIZE);
         });
     }

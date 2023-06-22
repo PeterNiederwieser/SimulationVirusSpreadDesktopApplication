@@ -7,9 +7,10 @@ public class Animal {
     private float yVelocity;
     private HealthState healthState;
 
-    public Animal(int x, int y) {
+    public Animal(int x, int y, HealthState healthState) {
         this.x = x;
         this.y = y;
+        this.healthState = healthState;
     }
 
     public int getX() {
