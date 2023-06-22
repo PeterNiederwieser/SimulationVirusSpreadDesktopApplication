@@ -6,8 +6,6 @@ import org.example.simulation.configuration.Context;
 import org.example.simulation.phase.*;
 import org.example.simulation.routine.Simulator;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 

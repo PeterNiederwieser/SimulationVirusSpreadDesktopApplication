@@ -2,14 +2,9 @@ package org.example.simulation.IO;
 
 import org.example.simulation.configuration.Context;
 import org.example.simulation.data.SurfaceType;
-import org.w3c.dom.css.RGBColor;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class MapDisplayer extends JPanel {
     private final Context context;
