@@ -5,8 +5,8 @@ import org.example.simulation.logic.motion.types.Motion;
 public class Animal {
     private int x;
     private int y;
-    private float xVelocity;
-    private float yVelocity;
+    private float velocityX;
+    private float velocityY;
     private HealthState healthState;
     private MotionType motionType;
 
@@ -33,20 +33,20 @@ public class Animal {
         this.y = y;
     }
 
-    public float getxVelocity() {
-        return xVelocity;
+    public float getVelocityX() {
+        return velocityX;
     }
 
-    public void setxVelocity(float xVelocity) {
-        this.xVelocity = xVelocity;
+    public void setVelocityX(float velocityX) {
+        this.velocityX = velocityX;
     }
 
-    public float getyVelocity() {
-        return yVelocity;
+    public float getVelocityY() {
+        return velocityY;
     }
 
-    public void setyVelocity(float yVelocity) {
-        this.yVelocity = yVelocity;
+    public void setVelocityY(float velocityY) {
+        this.velocityY = velocityY;
     }
 
     public HealthState getHealthState() {
@@ -59,5 +59,9 @@ public class Animal {
 
     public MotionType getMotionType() {
         return motionType;
+    }
+
+    public void setMotionType(MotionType motionType) {
+        this.motionType = motionType;
     }
 }

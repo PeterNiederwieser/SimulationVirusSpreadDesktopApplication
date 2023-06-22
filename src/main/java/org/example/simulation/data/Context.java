@@ -1,8 +1,5 @@
 package org.example.simulation.data;
 
-import org.example.simulation.data.Animal;
-import org.example.simulation.data.SurfaceType;
-
 import java.awt.*;
 import java.util.List;
 
@@ -12,6 +9,8 @@ public class Context {
     private final int NUMBER_OF_ANIMALS = 50;
     private final int NUMBER_OF_INITIAL_INFECTIONS = 10;
     private final int ANIMAL_SIZE = 10;
+    private final int MAX_ANIMAL_SPEED = 10;
+    private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 10;
     private final int DELAY = 1;
     private final int COLOR_VALUE_RANGE = 40;
     private final int MAP_GENERATION_SCALE_FACTOR = 2;
@@ -133,5 +132,13 @@ public class Context {
 
     public int getNUMBER_OF_INITIAL_INFECTIONS() {
         return NUMBER_OF_INITIAL_INFECTIONS;
+    }
+
+    public int getMAX_ANIMAL_SPEED() {
+        return MAX_ANIMAL_SPEED;
+    }
+
+    public int getMAX_TRIALS_OF_DIRECTION_CHANGE() {
+        return MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE;
     }
 }
