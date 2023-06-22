@@ -22,6 +22,7 @@ public class Context {
     private boolean isSimulationOngoing = true;
     private final List<Animal> population;
     private SurfaceType[][] map;
+    private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
 
 
     public Context() {
@@ -96,5 +97,9 @@ public class Context {
 
     public int getCOLOR_VALUE_RANGE() {
         return COLOR_VALUE_RANGE;
+    }
+
+    public String getFilePathOfMapImage() {
+        return filePathOfMapImage;
     }
 }

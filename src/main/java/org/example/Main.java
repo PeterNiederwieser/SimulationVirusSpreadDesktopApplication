@@ -16,11 +16,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
         Context context = new Context();
-        JFrame frame = new JFrame("Simulation of virus spreading");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000,1000);
-
-
         List<Phase> phases = List.of(
                 new AnimalBehaviour(),
                 new Infections(),
@@ -31,11 +26,10 @@ public class Main {
                 new StepIncrement()
         );
         MapDisplayer mapDisplayer = new MapDisplayer(context);
-        frame.add(mapDisplayer);
-        mapDisplayer.generateMapFromImage(filePathOfMapImage);
-        // mapDisplayer.paintComponent(frame.getGraphics());
-        frame.setVisible(true);
-/*        Simulator simulator = new Simulator(context, phases);
-        simulator.simulate();*/
+        MapCreator mapCreator = new MapCreator(context);
+        Simulator simulator = new Simulator(context, phases, mapCreator);
+        //simulator.simulate();
+        mapCreator.generateMapFromImage(filePathOfMapImage);
+        mapDisplayer.displayMap();
     }
 }
