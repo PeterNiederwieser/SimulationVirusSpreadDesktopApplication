@@ -1,6 +1,7 @@
 package org.example.simulation.configuration;
 
 import org.example.simulation.data.Animal;
+import org.example.simulation.data.SurfaceType;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,10 @@ public class Context {
     private final int NUMBER_OF_ANIMALS = 50;
     private final int DELAY = 1;
     private int stepNumber = 1;
+    private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private boolean isSimulationOngoing = true;
     private final List<Animal> population;
+    private SurfaceType[][] map;
 
 
     public Context() {
@@ -66,5 +69,17 @@ public class Context {
 
     public boolean isSimulationOngoing() {
         return isSimulationOngoing;
+    }
+
+    public SurfaceType[][] getMap() {
+        return map;
+    }
+
+    public void setMap(SurfaceType[][] map) {
+        this.map = map;
+    }
+
+    public int getMAP_GENERATION_SCALE_FACTOR() {
+        return MAP_GENERATION_SCALE_FACTOR;
     }
 }
