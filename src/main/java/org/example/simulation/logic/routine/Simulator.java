@@ -2,7 +2,7 @@ package org.example.simulation.logic.routine;
 
 import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.map.MapCreator;
-import org.example.simulation.data.configuration.Context;
+import org.example.simulation.data.Context;
 import org.example.simulation.logic.simulationPhase.Phase;
 
 import java.io.IOException;

@@ -1,20 +1,22 @@
 package org.example.simulation.logic.map;
 
-import org.example.simulation.data.configuration.Context;
+import org.example.simulation.data.Animal;
+import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class MapDisplayer extends JPanel {
     private final Context context;
     private final int MAP_GENERATION_SCALE_FACTOR;
-    private final int COLOR_VALUE_RANGE;
+    private final ColorHandler colorHandler;
 
-    public MapDisplayer(Context context) {
+    public MapDisplayer(Context context, ColorHandler colorHandler) {
         this.context = context;
         this.MAP_GENERATION_SCALE_FACTOR = context.getMAP_GENERATION_SCALE_FACTOR();
-        this.COLOR_VALUE_RANGE = context.getCOLOR_VALUE_RANGE();
+        this.colorHandler = colorHandler;
     }
 
     public void displayMap() {
@@ -28,6 +30,11 @@ public class MapDisplayer extends JPanel {
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        displaySurface(graphics);
+        displayPopulation(graphics);
+    }
+
+    private void displaySurface(Graphics graphics) {
         SurfaceType[][] map = context.getMap();
         int MAP_HEIGHT = map.length;
         int MAP_WIDTH = map[0].length;
@@ -43,38 +50,19 @@ public class MapDisplayer extends JPanel {
         int yScaled = y * MAP_GENERATION_SCALE_FACTOR;
         SurfaceType[][] map = context.getMap();
         SurfaceType surfaceType = map[x][y];
-        Color color = getColorForSurfaceType(surfaceType);
+        Color color = colorHandler.getColorForSurfaceType(surfaceType);
         graphics.setColor(color);
         graphics.fillRect(xScaled, yScaled, MAP_GENERATION_SCALE_FACTOR, MAP_GENERATION_SCALE_FACTOR);
     }
 
-    private Color getColorForSurfaceType(SurfaceType surfaceType) {
-        switch (surfaceType) {
-            case WATER:
-                return generateRandomColorInRange(Color.decode("#054177"), COLOR_VALUE_RANGE);
-            case ACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.decode("#2C5F2D"), COLOR_VALUE_RANGE);
-            case INACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.decode("#97BC62"), COLOR_VALUE_RANGE);
-            default:
-                return Color.WHITE;
-        }
-    }
-
-    private Color generateRandomColorInRange(Color referenceColor, int range) {
-        int red = referenceColor.getRed() + (int) (Math.random() * (range)) - range;
-        int green = referenceColor.getGreen() + (int) (Math.random() * (range)) - range;
-        int blue = referenceColor.getBlue() + (int) (Math.random() * (range)) - range;
-        return new Color(limitValue(red), limitValue(green), limitValue(blue));
-    }
-
-    private int limitValue(int color) {
-        int MAX_COLOR_VALUR = context.getMAX_COLOR_VALUE();
-        int MIN_COLOR_VALUE = context.getMIN_COLOR_VALUE();
-        return Math.min(Math.max(color, MIN_COLOR_VALUE), MAX_COLOR_VALUR);
-    }
-
-    private void displayPopulation() {
-
+    private void displayPopulation(Graphics graphics) {
+        List<Animal> population = context.getPopulation();
+        int ANIMAL_SIZE = context.getANIMAL_SIZE();
+        population.forEach(animal -> {
+            int x = animal.getX();
+            int y = animal.getY();
+            graphics.setColor(Color.ORANGE);
+            graphics.fillOval(x,y,ANIMAL_SIZE,ANIMAL_SIZE);
+        });
     }
 }

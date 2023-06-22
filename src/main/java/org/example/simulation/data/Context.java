@@ -1,4 +1,4 @@
-package org.example.simulation.data.configuration;
+package org.example.simulation.data;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.SurfaceType;
@@ -9,6 +9,7 @@ public class Context {
     private final float PROBABILITY_OF_INFECTION = 0.8F;
     private final float TIME_OF_RECOVERY = 1000F;
     private final int NUMBER_OF_ANIMALS = 50;
+    private final int ANIMAL_SIZE = 10;
     private final int DELAY = 1;
     private final int COLOR_VALUE_RANGE = 40;
     private final int MAP_GENERATION_SCALE_FACTOR = 2;
@@ -16,6 +17,9 @@ public class Context {
     private final int MAP_HEIGHT = 1000;
     private final int MIN_COLOR_VALUE = 0;
     private final int MAX_COLOR_VALUE = 255;
+    private final String COLOR_WATER = "#054177";
+    private final String COLOR_ACCESSIBLE_TERRAIN = "#2C5F2D";
+    private final String COLOR_INACCESSIBLE_TERRAIN = "#97BC62";
     private int stepNumber = 1;
     private boolean isSimulationOngoing = true;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
@@ -92,5 +96,21 @@ public class Context {
 
     public void setPopulation(List<Animal> population) {
         this.population = population;
+    }
+
+    public int getANIMAL_SIZE() {
+        return ANIMAL_SIZE;
+    }
+
+    public String getCOLOR_WATER() {
+        return COLOR_WATER;
+    }
+
+    public String getCOLOR_ACCESSIBLE_TERRAIN() {
+        return COLOR_ACCESSIBLE_TERRAIN;
+    }
+
+    public String getCOLOR_INACCESSIBLE_TERRAIN() {
+        return COLOR_INACCESSIBLE_TERRAIN;
     }
 }

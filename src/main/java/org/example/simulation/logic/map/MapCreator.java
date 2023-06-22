@@ -1,6 +1,6 @@
 package org.example.simulation.logic.map;
 
-import org.example.simulation.data.configuration.Context;
+import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
 
 import javax.imageio.ImageIO;

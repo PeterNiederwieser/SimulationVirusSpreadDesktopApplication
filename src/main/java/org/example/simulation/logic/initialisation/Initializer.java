@@ -1,7 +1,7 @@
 package org.example.simulation.logic.initialisation;
 
 import org.example.simulation.data.Animal;
-import org.example.simulation.data.configuration.Context;
+import org.example.simulation.data.Context;
 import org.example.simulation.logic.map.MapCreator;
 import org.example.simulation.logic.map.MapDisplayer;
 
@@ -34,13 +34,13 @@ public class Initializer {
         int MAP_HEIGHT = context.getMAP_HEIGHT();
         return IntStream.range(1, NUMBER_OF_ANIMALS)
                 .mapToObj(index -> {
-                    float x = getRandomInitialPositionCoordinate(MAP_WITH);
-                    float y = getRandomInitialPositionCoordinate(MAP_HEIGHT);
+                    int x = getRandomInitialPositionCoordinate(MAP_WITH);
+                    int y = getRandomInitialPositionCoordinate(MAP_HEIGHT);
                     return new Animal(x,y);})
                 .collect(Collectors.toList());
     }
 
-    private float getRandomInitialPositionCoordinate(int maxValue) {
-        return (float) Math.round(Math.random() * maxValue);
+    private int getRandomInitialPositionCoordinate(int maxValue) {
+        return (int) Math.round(Math.random() * maxValue);
     }
 }
