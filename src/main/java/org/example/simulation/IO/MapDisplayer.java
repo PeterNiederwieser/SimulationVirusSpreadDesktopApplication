@@ -58,11 +58,11 @@ public class MapDisplayer extends JPanel {
     private Color getColorForSurfaceType(SurfaceType surfaceType) {
         switch (surfaceType) {
             case WATER:
-                return generateRandomColorInRange(Color.BLUE, COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(Color.decode("#054177"), COLOR_VALUE_RANGE);
             case ACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.GREEN, COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(Color.decode("#2C5F2D"), COLOR_VALUE_RANGE);
             case INACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(Color.YELLOW, COLOR_VALUE_RANGE);
+                return generateRandomColorInRange(Color.decode("#97BC62"), COLOR_VALUE_RANGE);
             default:
                 return Color.WHITE;
         }
@@ -72,10 +72,7 @@ public class MapDisplayer extends JPanel {
         int red = referenceColor.getRed() + (int) (Math.random() * (range)) - range;
         int green = referenceColor.getGreen() + (int) (Math.random() * (range)) - range;
         int blue = referenceColor.getBlue() + (int) (Math.random() * (range)) - range;
-        red = limitValue(red);
-        green = limitValue(green);
-        blue = limitValue(blue);
-        return new Color(red, green, blue);
+        return new Color(limitValue(red), limitValue(green), limitValue(blue));
     }
 
     private int limitValue(int color) {
