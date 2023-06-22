@@ -17,8 +17,8 @@ public class Context {
     private int stepNumber = 1;
     private final int MAX_COLOR_VALUE = 255;
     private final int MIN_COLOR_VALUE = 0;
-    private final int COLOR_VALUE_RANGE = 50;
-    private final int MAP_GENERATION_SCALE_FACTOR = 1;
+    private final int COLOR_VALUE_RANGE = 40;
+    private final int MAP_GENERATION_SCALE_FACTOR = 2;
     private boolean isSimulationOngoing = true;
     private final List<Animal> population;
     private SurfaceType[][] map;
