@@ -1,4 +1,4 @@
-package org.example.simulation.logic.routine;
+package org.example.simulation;
 
 import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.map.MapCreator;

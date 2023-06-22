@@ -3,6 +3,7 @@ package org.example.simulation.logic.initialisation;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.HealthState;
+import org.example.simulation.data.MotionType;
 import org.example.simulation.logic.map.MapCreator;
 import org.example.simulation.logic.map.MapDisplayer;
 
@@ -46,7 +47,7 @@ public class Initializer {
                 .mapToObj(index -> {
                     int x = getRandomInitialPositionCoordinate(MAP_WITH);
                     int y = getRandomInitialPositionCoordinate(MAP_HEIGHT);
-                    return new Animal(x,y, HealthState.HEALTHY);})
+                    return new Animal(x,y, HealthState.HEALTHY, MotionType.STROLL);})
                 .collect(Collectors.toList());
     }
 

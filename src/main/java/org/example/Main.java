@@ -7,7 +7,7 @@ import org.example.simulation.logic.map.MapDisplayer;
 import org.example.simulation.data.Context;
 
 import org.example.simulation.logic.simulationPhase.*;
-import org.example.simulation.logic.routine.Simulator;
+import org.example.simulation.Simulator;
 
 import java.io.IOException;
 import java.util.List;

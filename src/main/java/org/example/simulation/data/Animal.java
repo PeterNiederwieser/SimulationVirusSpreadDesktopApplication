@@ -1,16 +1,20 @@
 package org.example.simulation.data;
 
+import org.example.simulation.logic.motion.types.Motion;
+
 public class Animal {
     private int x;
     private int y;
     private float xVelocity;
     private float yVelocity;
     private HealthState healthState;
+    private MotionType motionType;
 
-    public Animal(int x, int y, HealthState healthState) {
+    public Animal(int x, int y, HealthState healthState, MotionType motionType) {
         this.x = x;
         this.y = y;
         this.healthState = healthState;
+        this.motionType = motionType;
     }
 
     public int getX() {
@@ -51,5 +55,9 @@ public class Animal {
 
     public void setHealthState(HealthState healthState) {
         this.healthState = healthState;
+    }
+
+    public MotionType getMotionType() {
+        return motionType;
     }
 }
