@@ -15,6 +15,9 @@ public class Context {
     private final int NUMBER_OF_ANIMALS = 50;
     private final int DELAY = 1;
     private int stepNumber = 1;
+    private final int MAX_COLOR_VALUE = 255;
+    private final int MIN_COLOR_VALUE = 0;
+    private final int COLOR_VALUE_RANGE = 50;
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private boolean isSimulationOngoing = true;
     private final List<Animal> population;
@@ -81,5 +84,17 @@ public class Context {
 
     public int getMAP_GENERATION_SCALE_FACTOR() {
         return MAP_GENERATION_SCALE_FACTOR;
+    }
+
+    public int getMAX_COLOR_VALUE() {
+        return MAX_COLOR_VALUE;
+    }
+
+    public int getMIN_COLOR_VALUE() {
+        return MIN_COLOR_VALUE;
+    }
+
+    public int getCOLOR_VALUE_RANGE() {
+        return COLOR_VALUE_RANGE;
     }
 }
