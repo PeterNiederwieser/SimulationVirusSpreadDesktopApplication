@@ -6,7 +6,7 @@ import org.example.simulation.data.MotionType;
 
 public class HuntForFood implements Motion{
     @Override
-    public void move(Context context) {
+    public void move(Animal animal) {
 
     }
 

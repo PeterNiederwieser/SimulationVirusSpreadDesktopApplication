@@ -5,6 +5,6 @@ import org.example.simulation.data.Context;
 import org.example.simulation.data.MotionType;
 
 public interface Motion {
-    void move(Context context);
+    void move(Animal animal);
     boolean matches(Animal animal);
 }
