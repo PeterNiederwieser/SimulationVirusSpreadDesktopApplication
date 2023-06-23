@@ -7,12 +7,12 @@ import java.util.List;
 public class Context {
     private final float PROBABILITY_OF_INFECTION = 0.8F;
     private final float TIME_OF_RECOVERY = 1000F;
-    private final int NUMBER_OF_ANIMALS = 1000;
-    private final int NUMBER_OF_INITIAL_INFECTIONS = 0;
+    private final int NUMBER_OF_ANIMALS = 1;
+    private final int NUMBER_OF_INITIAL_INFECTIONS = 1;
     private final int ANIMAL_SIZE = 10;
     private final int MAX_ANIMAL_SPEED = 20;
-    private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 10;
-    private final int DELAY = 5000;
+    private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 100;
+    private final int DELAY_IN_MS = 1000;
     private final int COLOR_VALUE_RANGE = 50;
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private final int MAP_WIDTH = 800;
@@ -63,8 +63,8 @@ public class Context {
         return population;
     }
 
-    public int getDELAY() {
-        return DELAY;
+    public int getDELAY_IN_MS() {
+        return DELAY_IN_MS;
     }
 
     public boolean isSimulationOngoing() {
