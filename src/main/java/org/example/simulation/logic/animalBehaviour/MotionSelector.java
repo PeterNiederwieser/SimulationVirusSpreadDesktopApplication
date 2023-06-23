@@ -1,19 +1,18 @@
-package org.example.simulation.logic.motion;
+package org.example.simulation.logic.animalBehaviour;
 
 import org.example.simulation.data.Animal;
-import org.example.simulation.data.MotionType;
-import org.example.simulation.logic.motion.types.Motion;
+import org.example.simulation.logic.animalBehaviour.types.Behaviour;
 
 import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class MotionSelector {
-    private final Set<Motion> motions;
+    private final Set<Behaviour> motions;
 
-    public MotionSelector(Set<Motion> motions) {
+    public MotionSelector(Set<Behaviour> motions) {
         this.motions = motions;
     }
-    public Motion getMotion(Animal animal) {
+    public Behaviour getMotion(Animal animal) {
         return motions.stream()
                 .filter(motion -> motion.matches(animal))
                 .findFirst()

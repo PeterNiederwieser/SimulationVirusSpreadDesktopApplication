@@ -13,9 +13,9 @@ public class Context {
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 10;
     private final int DELAY = 1;
     private final int COLOR_VALUE_RANGE = 40;
-    private final int MAP_GENERATION_SCALE_FACTOR = 2;
-    private final int MAP_WIDTH = 1000;
-    private final int MAP_HEIGHT = 1000;
+    private final int MAP_GENERATION_SCALE_FACTOR = 1;
+    private final int MAP_WIDTH = 800;
+    private final int MAP_HEIGHT = 800;
     private final int MIN_COLOR_VALUE = 0;
     private final int MAX_COLOR_VALUE = 255;
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");

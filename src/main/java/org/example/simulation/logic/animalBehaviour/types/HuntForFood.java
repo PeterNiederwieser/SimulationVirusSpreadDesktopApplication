@@ -1,12 +1,11 @@
-package org.example.simulation.logic.motion.types;
+package org.example.simulation.logic.animalBehaviour.types;
 
 import org.example.simulation.data.Animal;
-import org.example.simulation.data.Context;
 import org.example.simulation.data.MotionType;
 
-public class HuntForFood implements Motion{
+public class HuntForFood implements Behaviour {
     @Override
-    public void move(Animal animal) {
+    public void behave(Animal animal) {
 
     }
 

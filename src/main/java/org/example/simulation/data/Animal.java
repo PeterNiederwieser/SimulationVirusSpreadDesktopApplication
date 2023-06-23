@@ -1,7 +1,5 @@
 package org.example.simulation.data;
 
-import org.example.simulation.logic.motion.types.Motion;
-
 public class Animal {
     private int x;
     private int y;

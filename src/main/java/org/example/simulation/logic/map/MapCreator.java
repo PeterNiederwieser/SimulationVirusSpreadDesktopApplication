@@ -20,8 +20,10 @@ public class MapCreator {
 
     public void generateMapFromImage(String imagePath) throws IOException {
         BufferedImage image = ImageIO.read(new File(imagePath));
-        int imageWidth = image.getWidth();
-        int imageHeight = image.getHeight();
+        /*int imageWidth = image.getWidth();
+        int imageHeight = image.getHeight();*/
+        int imageHeight = context.getMAP_HEIGHT();
+        int imageWidth = context.getMAP_WIDTH();
         map = new SurfaceType[imageHeight][imageWidth];
         for (int x = 0; x < imageHeight; x++) {
             for (int y = 0; y < imageWidth; y++) {
