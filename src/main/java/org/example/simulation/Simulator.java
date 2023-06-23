@@ -22,10 +22,9 @@ public class Simulator {
     }
     public void simulate() throws IOException {
         initializer.initializeSimulation();
-        /*do {
+        do {
             simulatePhases();
         } while(context.isSimulationOngoing());
-*/
     }
 
     private void simulatePhases() {

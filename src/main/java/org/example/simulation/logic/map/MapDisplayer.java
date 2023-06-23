@@ -55,7 +55,7 @@ public class MapDisplayer extends JPanel {
         graphics.fillRect(xScaled, yScaled, MAP_GENERATION_SCALE_FACTOR, MAP_GENERATION_SCALE_FACTOR);
     }
 
-    private void displayPopulation(Graphics graphics) {
+    public void displayPopulation(Graphics graphics) {
         List<Animal> population = context.getPopulation();
         int ANIMAL_SIZE = context.getANIMAL_SIZE();
         population.forEach(animal -> {

@@ -37,12 +37,14 @@ public class MapCreator {
 
     private SurfaceType getSurfaceTypeFromColor(Color pixelColor) {
         int COLOR_VALUE_RANGE = context.getCOLOR_VALUE_RANGE();
-        if (isColorInRange(pixelColor, Color.decode("#66ed7d"), COLOR_VALUE_RANGE)) {
-            return SurfaceType.ACCESSIBLE_TERRAIN;
-        } else if (isColorInRange(pixelColor, Color.decode("#030574"), COLOR_VALUE_RANGE)) {
+        if (isColorInRange(pixelColor, Color.decode("#030574"), COLOR_VALUE_RANGE)) {
             return SurfaceType.WATER;
-        } else {
+        }
+        /*else if (isColorInRange(pixelColor, Color.decode("#66ed7d"), COLOR_VALUE_RANGE)) {
             return SurfaceType.INACCESSIBLE_TERRAIN;
+        }*/
+        else {
+            return SurfaceType.ACCESSIBLE_TERRAIN;
         }
     }
 

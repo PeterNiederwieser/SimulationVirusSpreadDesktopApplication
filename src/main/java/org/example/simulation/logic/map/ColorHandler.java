@@ -15,16 +15,13 @@ public class ColorHandler {
 
     public Color getColorForSurfaceType(SurfaceType surfaceType) {
         int COLOR_VALUE_RANGE = context.getCOLOR_VALUE_RANGE();
-        switch (surfaceType) {
-            case WATER:
-                return generateRandomColorInRange(context.getCOLOR_WATER(), COLOR_VALUE_RANGE);
-            case ACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(context.getCOLOR_ACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
-            case INACCESSIBLE_TERRAIN:
-                return generateRandomColorInRange(context.getCOLOR_INACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
-            default:
-                return Color.WHITE;
-        }
+        return switch (surfaceType) {
+            case WATER -> generateRandomColorInRange(context.getCOLOR_WATER(), COLOR_VALUE_RANGE);
+            case ACCESSIBLE_TERRAIN ->
+                    generateRandomColorInRange(context.getCOLOR_ACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
+            case INACCESSIBLE_TERRAIN ->
+                    generateRandomColorInRange(context.getCOLOR_INACCESSIBLE_TERRAIN(), COLOR_VALUE_RANGE);
+        };
     }
 
     private Color generateRandomColorInRange(Color referenceColor, int range) {

@@ -1,18 +1,19 @@
 package org.example.simulation.data;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Context {
     private final float PROBABILITY_OF_INFECTION = 0.8F;
     private final float TIME_OF_RECOVERY = 1000F;
-    private final int NUMBER_OF_ANIMALS = 50;
-    private final int NUMBER_OF_INITIAL_INFECTIONS = 10;
+    private final int NUMBER_OF_ANIMALS = 1000;
+    private final int NUMBER_OF_INITIAL_INFECTIONS = 0;
     private final int ANIMAL_SIZE = 10;
-    private final int MAX_ANIMAL_SPEED = 10;
+    private final int MAX_ANIMAL_SPEED = 20;
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 10;
-    private final int DELAY = 1;
-    private final int COLOR_VALUE_RANGE = 40;
+    private final int DELAY = 5000;
+    private final int COLOR_VALUE_RANGE = 50;
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private final int MAP_WIDTH = 800;
     private final int MAP_HEIGHT = 800;
@@ -22,12 +23,12 @@ public class Context {
     private final Color COLOR_INFECTED_ANIMAL = Color.decode("#fa602d");
     private final Color COLOR_RECOVERED_ANIMAL = Color.decode("#f5e616");
     private final Color COLOR_WATER = Color.decode("#054177");
-    private final Color COLOR_ACCESSIBLE_TERRAIN = Color.decode("#2C5F2D");
-    private final Color COLOR_INACCESSIBLE_TERRAIN = Color.decode("#97BC62");
+    private final Color COLOR_ACCESSIBLE_TERRAIN = Color.decode("#97BC62");
+    private final Color COLOR_INACCESSIBLE_TERRAIN = Color.decode("#2C5F2D");
     private int stepNumber = 1;
     private boolean isSimulationOngoing = true;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
-    private List<Animal> population;
+    private List<Animal> population = new ArrayList<>();
     private SurfaceType[][] map;
 
     public float getPROBABILITY_OF_INFECTION() {
