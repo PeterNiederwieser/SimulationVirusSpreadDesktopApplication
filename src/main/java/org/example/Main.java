@@ -20,21 +20,22 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Context context = new Context();
         MapFieldUtils mapFieldUtils = new MapFieldUtils(context);
-        List<Behaviour> behaviours = List.of(
-                //new Stroll(context, mapFieldUtils)
-        );
-        List<Phase> phases = List.of(
-                new AnimalBehaviour(behaviours)
-                /*new Infections(),
-                new Analysis(),
-                new Graphic(),
-                new Diagrams(),
-                new Movements(),
-                new StepIncrement()*/
-        );
         ColorHandler colorHandler = new ColorHandler(context);
         MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler);
         MapCreator mapCreator = new MapCreator(context);
+        List<Behaviour> behaviours = List.of(
+                new Stroll(context, mapFieldUtils)
+        );
+        List<Phase> phases = List.of(
+                new AnimalBehaviour(behaviours),
+                // new Infections(),
+                // new Analysis(),
+                new Graphic(mapDisplayer),
+                // new Diagrams(),
+                // new Movements(),
+                new StepIncrement()
+        );
+
         Initializer initializer = new Initializer(context, mapCreator, mapDisplayer, mapFieldUtils);
         Simulator simulator = new Simulator(context, phases, mapCreator, initializer);
         simulator.simulate();
