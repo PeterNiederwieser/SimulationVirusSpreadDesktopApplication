@@ -25,26 +25,25 @@ public class Stroll implements Behaviour {
     private void performNextStep(Animal animal) {
         int MAX_TRIALS_OF_DIRECTION_CHANGE = context.getMAX_TRIALS_OF_DIRECTION_CHANGE();
         int numberOfTrials = 0;
-        int nextX = (int) ((float) animal.getX() + animal.getVelocityX());
-        int nextY = (int) ((float) animal.getY() + animal.getVelocityY());
-        while (numberOfTrials < MAX_TRIALS_OF_DIRECTION_CHANGE) {
+        int nextX, nextY;
+        do {
+            nextX = (int) ((float) animal.getX() + animal.getVelocityX());
+            nextY = (int) ((float) animal.getY() + animal.getVelocityY());
             if (isMoveInCurrentDirectionPossible(animal, nextX, nextY)) {
-                System.out.println("isMoveInCurrentDirectionPossible(animal, nextX, nextY) = " + isMoveInCurrentDirectionPossible(animal, nextX, nextY));
                 animal.setX(nextX);
                 animal.setY(nextY);
-                System.out.println("animal moved");
                 break;
             } else {
                 setNewRandomVelocity(animal);
             }
             numberOfTrials++;
-        }
-        System.out.println("Max trials reached __________________________________________");
+        } while(numberOfTrials < MAX_TRIALS_OF_DIRECTION_CHANGE);
     }
 
     private void setNewRandomVelocity(Animal animal) {
-        float nextVelocityX = Math.round(Math.random()*MAX_ANIMAL_SPEED);
-        float nextVelocityY = (float) Math.sqrt(Math.pow(MAX_ANIMAL_SPEED,2) - Math.pow(nextVelocityX,2));
+        float nextVelocityX = Math.round(Math.random()*MAX_ANIMAL_SPEED * 2) - MAX_ANIMAL_SPEED;
+        int randomSign = Math.random() < 0.5 ? 1 : -1;
+        float nextVelocityY = (float) Math.sqrt(Math.pow(MAX_ANIMAL_SPEED,2) - Math.pow(nextVelocityX,2)) * randomSign;
         animal.setVelocityX(nextVelocityX);
         animal.setVelocityY(nextVelocityY);
     }

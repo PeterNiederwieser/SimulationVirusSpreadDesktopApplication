@@ -7,11 +7,12 @@ import java.util.concurrent.TimeUnit;
 public class StepIncrement implements Phase {
     @Override
     public void perform(Context context) {
-        int delay = context.getDELAY();
+        int delay = context.getDELAY_IN_MS();
         int stepNumber = context.getStepNumber();
         context.setStepNumber(++stepNumber);
+        System.out.println("Step number: " + stepNumber);
         try {
-            TimeUnit.SECONDS.sleep(delay);
+            TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
