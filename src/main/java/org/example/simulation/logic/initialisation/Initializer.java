@@ -46,12 +46,6 @@ public class Initializer {
             Position position = getRandomInitialPosition();
             population.add(new Animal(position.x(), position.y(), HealthState.HEALTHY, MotionType.STROLL));
         }
-        /*return IntStream.range(1, NUMBER_OF_ANIMALS)
-                .mapToObj(index -> {
-                    int x = getRandomInitialPosition().x();
-                    int y = getRandomInitialPosition().y();
-                    return new Animal(x,y, HealthState.HEALTHY, MotionType.STROLL);})
-                .collect(Collectors.toList());*/
     }
 
     private Position getRandomInitialPosition() {
@@ -61,13 +55,7 @@ public class Initializer {
         do {
             x = (int) Math.round(Math.random() * MAP_HEIGHT);
             y = (int) Math.round(Math.random() * MAP_WIDTH);
-
         } while(mapFieldUtils.isAreaInaccessible(x,y) || mapFieldUtils.isFieldOccupied(null, x, y));
-        System.out.println("x = " + x);
-        System.out.println("y = " + y);
-        System.out.println("mapFieldUtils.isAreaInaccessible(x,y) = " + mapFieldUtils.isAreaInaccessible(x,y));
-        System.out.println("context.getMap()[x][y] = " + context.getMap()[x][y]);
-        System.out.println("context.getMap()[x+ context.getANIMAL_SIZE()][y+ context.getANIMAL_SIZE()] = " + context.getMap()[x+ context.getANIMAL_SIZE()][y+ context.getANIMAL_SIZE()]);
         return new Position(x,y);
     }
 }
