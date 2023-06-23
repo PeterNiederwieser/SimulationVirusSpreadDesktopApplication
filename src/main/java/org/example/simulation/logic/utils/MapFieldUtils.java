@@ -15,22 +15,16 @@ public class MapFieldUtils {
 
     public boolean isAreaInaccessible(int nextX, int nextY) {
         SurfaceType[][] map = context.getMap();
-        System.out.println("new method call isAreaInaccessible: _______________________________");
         for (int x = nextX; x <= nextX + context.getANIMAL_SIZE(); x++) {
             for (int y = nextY; y <= nextY + context.getANIMAL_SIZE(); y++) {
                 if (isFieldOutOfMap(x, y)){
-                    System.out.println("fieldOutOfMap");
                     return true;
                 }
                 if (map[x][y].equals(SurfaceType.WATER) || map[x][y].equals(SurfaceType.INACCESSIBLE_TERRAIN)) {
-                    System.out.println("x in method isAreaInaccessible = " + x);
-                    System.out.println("y in method isAreaInaccessible = " + y);
-                    System.out.println("map[x][y] in method isAreaInaccessible= " + map[x][y]);
                     return true;
                 }
             }
         }
-        System.out.println("End of method call: result: false _____________________________________________");
         return false;
     }
 
@@ -42,13 +36,12 @@ public class MapFieldUtils {
                 return true;
             }
         }
-        System.out.println("is field occupied: " + "false");
         return false;
     }
 
     public boolean isFieldOutOfMap(int nextX, int nextY) {
         SurfaceType[][] map = context.getMap();
-        return nextX >= map.length || nextY >= map[0].length;
+        return nextX < 0 || nextY < 0 || nextX >= map.length || nextY >= map[0].length;
     }
 
 
