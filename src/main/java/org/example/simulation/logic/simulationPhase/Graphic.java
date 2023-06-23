@@ -12,6 +12,6 @@ public class Graphic implements Phase {
 
     @Override
     public void perform(Context context) {
-        mapDisplayer.displayPopulation(mapDisplayer.getGraphics());
+        mapDisplayer.repaint();
     }
 }
