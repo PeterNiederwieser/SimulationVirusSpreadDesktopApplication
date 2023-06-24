@@ -3,32 +3,38 @@ package org.example.simulation.logic.simulationPhase;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.HealthState;
+import org.example.simulation.logic.simulationPhase.utils.PhaseUtils;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Infections implements Phase {
+public class InfectionSpread implements Phase {
+    private final PhaseUtils phaseUtils;
+
+    public InfectionSpread(PhaseUtils phaseUtils) {
+        this.phaseUtils = phaseUtils;
+    }
+
     @Override
     public void perform(Context context) {
         List<Animal> population = context.getPopulation();
-        List<Animal> infectedAnimals = population.stream()
-                .filter(animal -> animal.getHealthState().equals(HealthState.INFECTED))
-                .toList();
-
+        List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
         infectedAnimals.forEach(infectedAnimal -> {
             population.stream()
                     .filter(animal -> animal.getX() != infectedAnimal.getX() && animal.getY() != infectedAnimal.getY())
                     .forEach(otherAnimal -> {
                         if (isOtherAnimalWithinInfectionRadius(otherAnimal, infectedAnimal, context) && otherAnimal.getHealthState().equals(HealthState.HEALTHY)) {
-                            otherAnimal.setHealthState(getNextHealthStateOfOtherAnimal(context));
+                            changeHealthStateInCaseOfInfection(otherAnimal, context);
                         }
                     });
         });
     }
 
-    private HealthState getNextHealthStateOfOtherAnimal(Context context) {
+    private void changeHealthStateInCaseOfInfection(Animal animal, Context context) {
         float PROBABILITY_OF_INFECTION = context.getPROBABILITY_OF_INFECTION();
-        return Math.random() <= PROBABILITY_OF_INFECTION ? HealthState.INFECTED : HealthState.HEALTHY;
+        if (Math.random() <= PROBABILITY_OF_INFECTION) {
+            animal.setHealthState(HealthState.INFECTED);
+            animal.setMomentOfInfection(context.getStepNumber());
+        }
     }
 
     private boolean isOtherAnimalWithinInfectionRadius(Animal otherAnimal, Animal infectedAnimal, Context context) {

@@ -10,6 +10,7 @@ import org.example.simulation.data.Context;
 
 import org.example.simulation.logic.simulationPhase.*;
 import org.example.simulation.Simulator;
+import org.example.simulation.logic.simulationPhase.utils.PhaseUtils;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Context context = new Context();
+        PhaseUtils phaseUtils = new PhaseUtils(context);
         MapFieldUtils mapFieldUtils = new MapFieldUtils(context);
         ColorHandler colorHandler = new ColorHandler(context);
         MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler);
@@ -28,7 +30,8 @@ public class Main {
         );
         List<Phase> phases = List.of(
                 new AnimalBehaviour(behaviours),
-                new Infections(),
+                new Recovering(phaseUtils),
+                new InfectionSpread(phaseUtils),
                 // new Analysis(),
                 new Graphic(mapDisplayer),
                 // new Diagrams(),

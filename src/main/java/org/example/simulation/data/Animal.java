@@ -7,6 +7,7 @@ public class Animal {
     private float velocityY;
     private HealthState healthState;
     private MotionType motionType;
+    private int momentOfInfection;
 
     public Animal(int x, int y, HealthState healthState, MotionType motionType) {
         this.x = x;
@@ -61,5 +62,13 @@ public class Animal {
 
     public void setMotionType(MotionType motionType) {
         this.motionType = motionType;
+    }
+
+    public int getMomentOfInfection() {
+        return momentOfInfection;
+    }
+
+    public void setMomentOfInfection(int momentOfInfection) {
+        this.momentOfInfection = momentOfInfection;
     }
 }

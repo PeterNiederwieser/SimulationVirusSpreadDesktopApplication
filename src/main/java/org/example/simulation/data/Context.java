@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Context {
-    private final float PROBABILITY_OF_INFECTION = 0.8F;
-    private final float TIME_OF_RECOVERY = 1000F;
+    private final float PROBABILITY_OF_INFECTION = 1.0F;
+    private final float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
+    private final int TIME_OF_RECOVERY = 500;
     private final int NUMBER_OF_ANIMALS = 100;
     private final int NUMBER_OF_INITIAL_INFECTIONS = 10;
     private final int INFECTION_RADIUS = 20;
     private final int ANIMAL_SIZE = 10;
-    private final int MAX_ANIMAL_SPEED = 1;
+    private final int MAX_ANIMAL_SPEED = 2;
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 100;
-    private final int DELAY_IN_MS = 40;
+    private final int DELAY_IN_MS = 80;
     private final int COLOR_VALUE_RANGE = 50;
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private final int MAP_WIDTH = 800;
@@ -36,7 +37,7 @@ public class Context {
         return PROBABILITY_OF_INFECTION;
     }
 
-    public float getTIME_OF_RECOVERY() {
+    public int getTIME_OF_RECOVERY() {
         return TIME_OF_RECOVERY;
     }
 
@@ -146,5 +147,13 @@ public class Context {
 
     public int getINFECTION_RADIUS() {
         return INFECTION_RADIUS;
+    }
+
+    public float getPROBABILITY_OF_FATAL_INFECTION_COURSE() {
+        return PROBABILITY_OF_FATAL_INFECTION_COURSE;
+    }
+
+    public int getMAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE() {
+        return MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE;
     }
 }
