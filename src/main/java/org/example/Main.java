@@ -28,7 +28,7 @@ public class Main {
         );
         List<Phase> phases = List.of(
                 new AnimalBehaviour(behaviours),
-                // new Infections(),
+                new Infections(),
                 // new Analysis(),
                 new Graphic(mapDisplayer),
                 // new Diagrams(),
