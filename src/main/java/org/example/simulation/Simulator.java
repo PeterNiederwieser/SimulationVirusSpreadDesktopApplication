@@ -11,26 +11,24 @@ import java.util.List;
 public class Simulator {
     private final Context context;
     private final List<Phase> phases;
-    private final MapCreator mapCreator;
     private final Initializer initializer;
 
-    public Simulator(Context context, List<Phase> phases, MapCreator mapCreator, Initializer initializer) {
+    public Simulator(Context context, List<Phase> phases, Initializer initializer) {
         this.context = context;
         this.phases = phases;
-        this.mapCreator = mapCreator;
         this.initializer = initializer;
     }
+
     public void simulate() throws IOException {
         initializer.initializeSimulation();
         do {
             simulatePhases();
-        } while(context.isSimulationOngoing());
+        } while (context.isSimulationOngoing());
     }
 
     private void simulatePhases() {
-        for(Phase phase : phases) {
+        for (Phase phase : phases) {
             phase.perform(context);
         }
     }
-
 }

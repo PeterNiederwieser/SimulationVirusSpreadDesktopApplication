@@ -104,10 +104,6 @@ public class Context {
         return filePathOfMapImage;
     }
 
-    public void setPopulation(List<Animal> population) {
-        this.population = population;
-    }
-
     public int getANIMAL_SIZE() {
         return ANIMAL_SIZE;
     }
@@ -154,10 +150,6 @@ public class Context {
 
     public float getPROBABILITY_OF_FATAL_INFECTION_COURSE() {
         return PROBABILITY_OF_FATAL_INFECTION_COURSE;
-    }
-
-    public int getMAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE() {
-        return MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE;
     }
 
     public int getMIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION() {

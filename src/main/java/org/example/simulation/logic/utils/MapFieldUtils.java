@@ -17,7 +17,7 @@ public class MapFieldUtils {
         SurfaceType[][] map = context.getMap();
         for (int x = nextX; x <= nextX + context.getANIMAL_SIZE(); x++) {
             for (int y = nextY; y <= nextY + context.getANIMAL_SIZE(); y++) {
-                if (isFieldOutOfMap(x, y)){
+                if (isFieldOutOfMap(x, y)) {
                     return true;
                 }
                 if (map[x][y].equals(SurfaceType.WATER) || map[x][y].equals(SurfaceType.INACCESSIBLE_TERRAIN)) {
@@ -44,9 +44,8 @@ public class MapFieldUtils {
         return nextX < 0 || nextY < 0 || nextX >= map.length || nextY >= map[0].length;
     }
 
-
     private List<Animal> getOtherAnimals(Animal currentAnimal) {
-        if(currentAnimal == null) {
+        if (currentAnimal == null) {
             return context.getPopulation();
         }
         return context.getPopulation()

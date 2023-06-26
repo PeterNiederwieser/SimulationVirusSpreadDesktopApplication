@@ -19,10 +19,7 @@ public class Dying implements Phase {
         List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
         infectedAnimals.forEach(animal -> {
             if (isAnimalDying(animal, context)) {
-                System.out.println("________________________________________________________________________________");
-                List<Animal> population = context.getPopulation();
-                population.remove(animal);
-                context.setPopulation(population);
+                context.getPopulation().remove(animal);
             }
         });
     }

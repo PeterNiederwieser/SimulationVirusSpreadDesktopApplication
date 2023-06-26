@@ -22,7 +22,6 @@ public class Recovering implements Phase {
                 animal.setHealthState(HealthState.RECOVERED);
             }
         });
-
     }
 
     private boolean isAnimalRecovered(Animal animal, Context context) {

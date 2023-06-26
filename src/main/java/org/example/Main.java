@@ -37,9 +37,8 @@ public class Main {
                 new Graphic(mapDisplayer),
                 new StepIncrement()
         );
-
         Initializer initializer = new Initializer(context, mapCreator, mapDisplayer, mapFieldUtils);
-        Simulator simulator = new Simulator(context, phases, mapCreator, initializer);
+        Simulator simulator = new Simulator(context, phases, initializer);
         simulator.simulate();
     }
 }

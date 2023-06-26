@@ -65,10 +65,6 @@ public class Animal {
         return motionType;
     }
 
-    public void setMotionType(MotionType motionType) {
-        this.motionType = motionType;
-    }
-
     public int getMomentOfInfection() {
         return momentOfInfection;
     }
@@ -81,16 +77,8 @@ public class Animal {
         return timeOfPossibleDeathAfterInfection;
     }
 
-    public void setTimeOfPossibleDeathAfterInfection(int timeOfPossibleDeathAfterInfection) {
-        this.timeOfPossibleDeathAfterInfection = timeOfPossibleDeathAfterInfection;
-    }
-
     public boolean isGettingSeverelyIll() {
         return isGettingSeverelyIll;
-    }
-
-    public void setGettingSeverelyIll(boolean gettingSeverelyIll) {
-        isGettingSeverelyIll = gettingSeverelyIll;
     }
 
     public int getStartOfSevereIllness() {
