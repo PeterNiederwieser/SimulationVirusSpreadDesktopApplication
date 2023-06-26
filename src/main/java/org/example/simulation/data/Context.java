@@ -10,7 +10,7 @@ public class Context {
     private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
-    private final int NUMBER_OF_ANIMALS = 200;
+    private final int NUMBER_OF_ANIMALS = 400;
     private final int NUMBER_OF_INITIAL_INFECTIONS = 5;
     private final int INFECTION_RADIUS = 20;
     private final int ANIMAL_SIZE = 10;
