@@ -27,7 +27,6 @@ public class MapDisplayer extends JPanel {
         frame.add(this);
         frame.setVisible(true);
         SwingUtilities.invokeLater(this::repaint);
-
     }
 
     @Override
@@ -66,7 +65,7 @@ public class MapDisplayer extends JPanel {
             int y = animal.getY();
             Color animalColor = colorHandler.getAnimalColor(animal);
             graphics.setColor(animalColor);
-            graphics.fillOval(x,y,ANIMAL_SIZE,ANIMAL_SIZE);
+            graphics.fillOval(x, y, ANIMAL_SIZE, ANIMAL_SIZE);
         });
     }
 }

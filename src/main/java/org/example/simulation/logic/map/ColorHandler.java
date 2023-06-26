@@ -42,6 +42,7 @@ public class ColorHandler {
             case HEALTHY -> context.getCOLOR_HEALTHY_ANIMAL();
             case INFECTED -> context.getCOLOR_INFECTED_ANIMAL();
             case RECOVERED -> context.getCOLOR_RECOVERED_ANIMAL();
+            case SEVERELY_ILL -> context.getCOLOR_SEVERELY_ILL_ANIMAL();
         };
     }
 }

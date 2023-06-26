@@ -44,7 +44,9 @@ public class Initializer {
         List<Animal> population = context.getPopulation();
         for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
             Position position = getRandomInitialPosition();
-            population.add(new Animal(position.x(), position.y(), HealthState.HEALTHY, MotionType.STROLL));
+            int timeOfPossibleSevereIllnessAfterInfection = Math.max((int) Math.round(Math.random() * context.getTIME_OF_RECOVERY()), context.getMIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION());
+            boolean isGettingSeverelyIll = Math.random() <= context.getPROBABILITY_OF_FATAL_INFECTION_COURSE();
+            population.add(new Animal(position.x(), position.y(), HealthState.HEALTHY, MotionType.STROLL, timeOfPossibleSevereIllnessAfterInfection, isGettingSeverelyIll));
         }
     }
 

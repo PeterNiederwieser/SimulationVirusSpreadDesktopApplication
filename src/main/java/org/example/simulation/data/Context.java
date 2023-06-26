@@ -7,6 +7,8 @@ import java.util.List;
 public class Context {
     private final float PROBABILITY_OF_INFECTION = 1.0F;
     private final float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
+    private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
+    private final int DURATION_OF_SEVERE_ILLNESS = 100;
     private final int TIME_OF_RECOVERY = 500;
     private final int NUMBER_OF_ANIMALS = 100;
     private final int NUMBER_OF_INITIAL_INFECTIONS = 10;
@@ -24,6 +26,7 @@ public class Context {
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");
     private final Color COLOR_INFECTED_ANIMAL = Color.decode("#fa602d");
     private final Color COLOR_RECOVERED_ANIMAL = Color.decode("#f5e616");
+    private final Color COLOR_SEVERELY_ILL_ANIMAL = Color.BLACK;
     private final Color COLOR_WATER = Color.decode("#054177");
     private final Color COLOR_ACCESSIBLE_TERRAIN = Color.decode("#97BC62");
     private final Color COLOR_INACCESSIBLE_TERRAIN = Color.decode("#2C5F2D");
@@ -155,5 +158,17 @@ public class Context {
 
     public int getMAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE() {
         return MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE;
+    }
+
+    public int getMIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION() {
+        return MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION;
+    }
+
+    public int getDURATION_OF_SEVERE_ILLNESS() {
+        return DURATION_OF_SEVERE_ILLNESS;
+    }
+
+    public Color getCOLOR_SEVERELY_ILL_ANIMAL() {
+        return COLOR_SEVERELY_ILL_ANIMAL;
     }
 }

@@ -14,7 +14,7 @@ public class PhaseUtils {
     }
     public List<Animal> getInfectedAnimals() {
         return context.getPopulation().stream()
-                .filter(animal -> animal.getHealthState().equals(HealthState.INFECTED))
+                .filter(animal -> animal.getHealthState().equals(HealthState.INFECTED) || animal.getHealthState().equals(HealthState.SEVERELY_ILL))
                 .toList();
     }
 }

@@ -31,11 +31,10 @@ public class Main {
         List<Phase> phases = List.of(
                 new AnimalBehaviour(behaviours),
                 new Recovering(phaseUtils),
+                new SevereIllness(phaseUtils),
+                new Dying(phaseUtils),
                 new InfectionSpread(phaseUtils),
-                // new Analysis(),
                 new Graphic(mapDisplayer),
-                // new Diagrams(),
-                // new Movements(),
                 new StepIncrement()
         );
 

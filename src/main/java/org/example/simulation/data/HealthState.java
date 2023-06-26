@@ -3,5 +3,6 @@ package org.example.simulation.data;
 public enum HealthState {
     HEALTHY,
     INFECTED,
-    RECOVERED
+    RECOVERED,
+    SEVERELY_ILL
 }

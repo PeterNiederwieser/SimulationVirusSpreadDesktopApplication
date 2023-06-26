@@ -10,7 +10,6 @@ public class StepIncrement implements Phase {
         int delay = context.getDELAY_IN_MS();
         int stepNumber = context.getStepNumber();
         context.setStepNumber(++stepNumber);
-        System.out.println("Step number: " + stepNumber);
         try {
             TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException e) {

@@ -8,12 +8,17 @@ public class Animal {
     private HealthState healthState;
     private MotionType motionType;
     private int momentOfInfection;
+    private int startOfSevereIllness;
+    private int timeOfPossibleDeathAfterInfection;
+    private boolean isGettingSeverelyIll;
 
-    public Animal(int x, int y, HealthState healthState, MotionType motionType) {
+    public Animal(int x, int y, HealthState healthState, MotionType motionType, int timeOfPossibleDeathAfterInfection, boolean isDyingInCaseOfInfection) {
         this.x = x;
         this.y = y;
         this.healthState = healthState;
         this.motionType = motionType;
+        this.timeOfPossibleDeathAfterInfection = timeOfPossibleDeathAfterInfection;
+        this.isGettingSeverelyIll = isDyingInCaseOfInfection;
     }
 
     public int getX() {
@@ -70,5 +75,29 @@ public class Animal {
 
     public void setMomentOfInfection(int momentOfInfection) {
         this.momentOfInfection = momentOfInfection;
+    }
+
+    public int getTimeOfPossibleDeathAfterInfection() {
+        return timeOfPossibleDeathAfterInfection;
+    }
+
+    public void setTimeOfPossibleDeathAfterInfection(int timeOfPossibleDeathAfterInfection) {
+        this.timeOfPossibleDeathAfterInfection = timeOfPossibleDeathAfterInfection;
+    }
+
+    public boolean isGettingSeverelyIll() {
+        return isGettingSeverelyIll;
+    }
+
+    public void setGettingSeverelyIll(boolean gettingSeverelyIll) {
+        isGettingSeverelyIll = gettingSeverelyIll;
+    }
+
+    public int getStartOfSevereIllness() {
+        return startOfSevereIllness;
+    }
+
+    public void setStartOfSevereIllness(int startOfSevereIllness) {
+        this.startOfSevereIllness = startOfSevereIllness;
     }
 }
