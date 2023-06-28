@@ -3,7 +3,7 @@ package org.example.simulation.logic.animalBehaviour.types;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.BehaviourType;
 
-public class HuntForFood implements org.example.simulation.logic.animalBehaviour.types.Behaviour {
+public class Rest implements Behaviour{
     @Override
     public void behave(Animal animal) {
 
@@ -11,6 +11,6 @@ public class HuntForFood implements org.example.simulation.logic.animalBehaviour
 
     @Override
     public boolean matches(Animal animal) {
-        return animal.getBehaviourType().equals(BehaviourType.HUNT_FOR_FOOD);
+        return animal.getBehaviourType().equals(BehaviourType.REST);
     }
 }

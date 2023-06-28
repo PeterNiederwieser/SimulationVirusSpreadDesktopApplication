@@ -11,11 +11,13 @@ public class Context {
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
     private final int NUMBER_OF_ANIMALS = 200;
-    private final int NUMBER_OF_INITIAL_INFECTIONS = 5;
-    private final int INFECTION_RADIUS = 20;
+    private final int NUMBER_OF_INITIAL_INFECTIONS = 20;
+    private final int INFECTION_RADIUS = 10;
     private final int ANIMAL_SIZE = 10;
-    private final int MAX_ANIMAL_SPEED = 2;
-    private final int MAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL = 1;
+    private final float MAX_ANIMAL_SPEED = 2.5F;
+    private final float MAX_INFECTED_ANIMAL_SPEED = 2F;
+    private final float MAX_SEVERELY_ILL_ANIMAL_SPEED = 1F;
+    private final float MIN_ANIMAL_SPEED = 1F;
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 200;
     private final int DELAY_IN_MS = 40;
     private final int COLOR_VALUE_RANGE = 50;
@@ -141,7 +143,7 @@ public class Context {
         return NUMBER_OF_INITIAL_INFECTIONS;
     }
 
-    public int getMAX_ANIMAL_SPEED() {
+    public float getMAX_ANIMAL_SPEED() {
         return MAX_ANIMAL_SPEED;
     }
 
@@ -173,7 +175,15 @@ public class Context {
         return COLOR_SEVERELY_ILL_ANIMAL;
     }
 
-    public int getMAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL() {
-        return MAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL;
+    public float getMAX_INFECTED_ANIMAL_SPEED() {
+        return MAX_INFECTED_ANIMAL_SPEED;
+    }
+
+    public float getMAX_SEVERELY_ILL_ANIMAL_SPEED() {
+        return MAX_SEVERELY_ILL_ANIMAL_SPEED;
+    }
+
+    public float getMIN_ANIMAL_SPEED() {
+        return MIN_ANIMAL_SPEED;
     }
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.simulation.logic.animalBehaviour.types.Behaviour;
+import org.example.simulation.logic.animalBehaviour.types.Rest;
 import org.example.simulation.logic.animalBehaviour.types.Stroll;
 import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.io.ColorHandler;
@@ -28,7 +29,8 @@ public class Main {
         MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler);
         MapCreator mapCreator = new MapCreator(context);
         List<Behaviour> behaviours = List.of(
-                new Stroll(context, mapFieldUtils)
+                new Stroll(context, mapFieldUtils),
+                new Rest()
         );
         List<Phase> phases = List.of(
                 new AnimalBehaviour(behaviours),

@@ -7,7 +7,6 @@ import org.example.simulation.logic.io.MapPrinter;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Initializer {
@@ -49,7 +48,7 @@ public class Initializer {
             Position position = getRandomInitialPosition();
             int timeOfPossibleSevereIllnessAfterInfection = Math.max((int) Math.round(Math.random() * context.getTIME_OF_RECOVERY()), context.getMIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION());
             boolean isGettingSeverelyIll = Math.random() <= context.getPROBABILITY_OF_FATAL_INFECTION_COURSE();
-            population.add(new Animal(position.x(), position.y(), HealthState.HEALTHY, MotionType.STROLL, timeOfPossibleSevereIllnessAfterInfection, isGettingSeverelyIll));
+            population.add(new Animal(position.x(), position.y(), context.getMAX_ANIMAL_SPEED(), HealthState.HEALTHY, BehaviourType.STROLL, timeOfPossibleSevereIllnessAfterInfection, isGettingSeverelyIll));
         }
     }
 
