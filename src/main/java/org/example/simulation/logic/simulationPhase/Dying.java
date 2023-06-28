@@ -16,18 +16,16 @@ public class Dying implements Phase {
 
     @Override
     public void perform(Context context) {
-        List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
-        infectedAnimals.forEach(animal -> {
+        List<Animal> severelyIllAnimals = phaseUtils.getSeverelyIllAnimals();
+        severelyIllAnimals.forEach(animal -> {
             if (isAnimalDying(animal, context)) {
-                System.out.println("________________________________________________________________________________");
                 List<Animal> population = context.getPopulation();
                 population.remove(animal);
-                context.setPopulation(population);
             }
         });
     }
 
     private boolean isAnimalDying(Animal animal, Context context) {
-        return (animal.getHealthState().equals(HealthState.SEVERELY_ILL) && (context.getStepNumber() - animal.getStartOfSevereIllness()) >= context.getDURATION_OF_SEVERE_ILLNESS());
+        return ((context.getStepNumber() - animal.getStartOfSevereIllness()) >= context.getDURATION_OF_SEVERE_ILLNESS());
     }
 }

@@ -16,7 +16,7 @@ public class Recovering implements Phase {
 
     @Override
     public void perform(Context context) {
-        List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
+        List<Animal> infectedAnimals = phaseUtils.getInfectedAnimalsWithoutSeverelyIllAnimals();
         infectedAnimals.forEach(animal -> {
             if (isAnimalRecovered(animal, context)) {
                 animal.setHealthState(HealthState.RECOVERED);

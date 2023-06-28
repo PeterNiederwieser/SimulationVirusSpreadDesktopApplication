@@ -14,7 +14,8 @@ public class Context {
     private final int NUMBER_OF_INITIAL_INFECTIONS = 5;
     private final int INFECTION_RADIUS = 20;
     private final int ANIMAL_SIZE = 10;
-    private final int MAX_ANIMAL_SPEED = 1;
+    private final int MAX_ANIMAL_SPEED = 2;
+    private final int MAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL = 1;
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 200;
     private final int DELAY_IN_MS = 40;
     private final int COLOR_VALUE_RANGE = 50;
@@ -170,5 +171,9 @@ public class Context {
 
     public Color getCOLOR_SEVERELY_ILL_ANIMAL() {
         return COLOR_SEVERELY_ILL_ANIMAL;
+    }
+
+    public int getMAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL() {
+        return MAX_ANIMAL_SPEED_OF_SEVERLY_ILL_ANIMAL;
     }
 }

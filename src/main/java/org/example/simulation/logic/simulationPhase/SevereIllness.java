@@ -7,7 +7,7 @@ import org.example.simulation.logic.simulationPhase.utils.PhaseUtils;
 
 import java.util.List;
 
-public class SevereIllness implements Phase{
+public class SevereIllness implements Phase {
 
     private final PhaseUtils phaseUtils;
 
@@ -19,7 +19,7 @@ public class SevereIllness implements Phase{
     public void perform(Context context) {
         List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
         infectedAnimals.forEach(animal -> {
-            if(isAnimalGettingSeverelyIll(animal, context)) {
+            if (isAnimalGettingSeverelyIll(animal, context)) {
                 animal.setHealthState(HealthState.SEVERELY_ILL);
                 animal.setStartOfSevereIllness(context.getStepNumber());
             }
