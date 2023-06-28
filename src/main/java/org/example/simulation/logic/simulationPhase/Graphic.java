@@ -1,7 +1,7 @@
 package org.example.simulation.logic.simulationPhase;
 
 import org.example.simulation.data.Context;
-import org.example.simulation.logic.map.MapDisplayer;
+import org.example.simulation.logic.io.MapDisplayer;
 
 public class Graphic implements Phase {
     private final MapDisplayer mapDisplayer;

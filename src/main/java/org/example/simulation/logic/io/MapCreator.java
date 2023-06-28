@@ -1,4 +1,4 @@
-package org.example.simulation.logic.map;
+package org.example.simulation.logic.io;
 
 import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
@@ -20,8 +20,6 @@ public class MapCreator {
 
     public void generateMapFromImage(String imagePath) throws IOException {
         BufferedImage image = ImageIO.read(new File(imagePath));
-        /*int imageWidth = image.getWidth();
-        int imageHeight = image.getHeight();*/
         int imageHeight = context.getMAP_HEIGHT();
         int imageWidth = context.getMAP_WIDTH();
         map = new SurfaceType[imageHeight][imageWidth];
@@ -39,11 +37,7 @@ public class MapCreator {
         int COLOR_VALUE_RANGE = context.getCOLOR_VALUE_RANGE();
         if (isColorInRange(pixelColor, Color.decode("#030574"), COLOR_VALUE_RANGE)) {
             return SurfaceType.WATER;
-        }
-        /*else if (isColorInRange(pixelColor, Color.decode("#66ed7d"), COLOR_VALUE_RANGE)) {
-            return SurfaceType.INACCESSIBLE_TERRAIN;
-        }*/
-        else {
+        } else {
             return SurfaceType.ACCESSIBLE_TERRAIN;
         }
     }

@@ -1,7 +1,7 @@
 package org.example.simulation;
 
 import org.example.simulation.logic.initialisation.Initializer;
-import org.example.simulation.logic.map.MapCreator;
+import org.example.simulation.logic.io.MapCreator;
 import org.example.simulation.data.Context;
 import org.example.simulation.logic.simulationPhase.Phase;
 

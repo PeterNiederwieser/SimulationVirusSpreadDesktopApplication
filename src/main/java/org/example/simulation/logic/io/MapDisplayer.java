@@ -1,4 +1,4 @@
-package org.example.simulation.logic.map;
+package org.example.simulation.logic.io;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
@@ -37,14 +37,17 @@ public class MapDisplayer extends JPanel {
     }
 
     private void displaySurface(Graphics graphics) {
-        SurfaceType[][] map = context.getMap();
+        ImageIcon imageIcon = new ImageIcon("map.png");
+        Image image = imageIcon.getImage();
+        graphics.drawImage(image, 0, 0, null);
+        /*SurfaceType[][] map = context.getMap();
         int MAP_HEIGHT = map.length;
         int MAP_WIDTH = map[0].length;
         for (int x = 0; x < MAP_HEIGHT; x++) {
             for (int y = 0; y < MAP_WIDTH; y++) {
                 paintSurfaceType(graphics, x, y);
             }
-        }
+        }*/
     }
 
     private void paintSurfaceType(Graphics graphics, int x, int y) {
@@ -61,8 +64,8 @@ public class MapDisplayer extends JPanel {
         List<Animal> population = context.getPopulation();
         int ANIMAL_SIZE = context.getANIMAL_SIZE();
         population.forEach(animal -> {
-            int x = animal.getX();
-            int y = animal.getY();
+            int x = animal.getX() * MAP_GENERATION_SCALE_FACTOR;
+            int y = animal.getY() * MAP_GENERATION_SCALE_FACTOR;
             Color animalColor = colorHandler.getAnimalColor(animal);
             graphics.setColor(animalColor);
             graphics.fillOval(x, y, ANIMAL_SIZE, ANIMAL_SIZE);

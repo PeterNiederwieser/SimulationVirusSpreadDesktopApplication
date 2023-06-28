@@ -1,8 +1,9 @@
 package org.example.simulation.logic.initialisation;
 
 import org.example.simulation.data.*;
-import org.example.simulation.logic.map.MapCreator;
-import org.example.simulation.logic.map.MapDisplayer;
+import org.example.simulation.logic.io.MapCreator;
+import org.example.simulation.logic.io.MapDisplayer;
+import org.example.simulation.logic.io.MapPrinter;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 import java.io.IOException;
@@ -14,18 +15,20 @@ public class Initializer {
     private final MapCreator mapCreator;
     private final MapDisplayer mapDisplayer;
     private final MapFieldUtils mapFieldUtils;
-    private List<Position> initialPositions = new ArrayList<>();
+    private final MapPrinter mapPrinter;
 
-    public Initializer(Context context, MapCreator mapCreator, MapDisplayer mapDisplayer, MapFieldUtils mapFieldUtils) {
+    public Initializer(Context context, MapCreator mapCreator, MapDisplayer mapDisplayer, MapFieldUtils mapFieldUtils, MapPrinter mapPrinter) {
         this.context = context;
         this.mapCreator = mapCreator;
         this.mapDisplayer = mapDisplayer;
         this.mapFieldUtils = mapFieldUtils;
+        this.mapPrinter = mapPrinter;
     }
 
     public void initializeSimulation() throws IOException {
         String filePathOfImage = context.getFilePathOfMapImage();
         mapCreator.generateMapFromImage(filePathOfImage);
+        mapPrinter.printMap(context);
         setInitializedPopulation();
         initializeStartingStateOfInfections();
         mapDisplayer.displayMap();
