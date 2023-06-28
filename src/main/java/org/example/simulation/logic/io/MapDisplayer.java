@@ -23,7 +23,7 @@ public class MapDisplayer extends JPanel {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(context.getMAP_WIDTH(), context.getMAP_HEIGHT());
+        frame.setSize(context.getMAP_WIDTH(), context.getMAP_HEIGHT() + context.getWINDOW_HEIGHT_CORRECTION());
         frame.add(this);
         frame.setVisible(true);
         SwingUtilities.invokeLater(this::repaint);

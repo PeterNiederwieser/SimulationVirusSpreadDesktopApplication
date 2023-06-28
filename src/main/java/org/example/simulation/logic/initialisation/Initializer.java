@@ -59,7 +59,7 @@ public class Initializer {
         do {
             x = (int) Math.round(Math.random() * MAP_HEIGHT);
             y = (int) Math.round(Math.random() * MAP_WIDTH);
-        } while(mapFieldUtils.isAreaInaccessible(x,y) || mapFieldUtils.isFieldOccupied(null, x, y));
-        return new Position(x,y);
+        } while (mapFieldUtils.isAreaInaccessible(x, y) || mapFieldUtils.isFieldOccupied(null, x, y));
+        return new Position(x, y);
     }
 }

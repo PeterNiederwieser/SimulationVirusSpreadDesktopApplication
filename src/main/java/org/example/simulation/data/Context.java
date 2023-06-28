@@ -24,6 +24,7 @@ public class Context {
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private final int MAP_WIDTH = 800;
     private final int MAP_HEIGHT = 800;
+    private final int WINDOW_HEIGHT_CORRECTION = 37;
     private final int MIN_COLOR_VALUE = 0;
     private final int MAX_COLOR_VALUE = 255;
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");
@@ -185,5 +186,9 @@ public class Context {
 
     public float getMIN_ANIMAL_SPEED() {
         return MIN_ANIMAL_SPEED;
+    }
+
+    public int getWINDOW_HEIGHT_CORRECTION() {
+        return WINDOW_HEIGHT_CORRECTION;
     }
 }
