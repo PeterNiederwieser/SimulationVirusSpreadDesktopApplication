@@ -31,7 +31,7 @@ public class MapFieldUtils {
     public boolean isFieldOccupied(Animal currentAnimal, int nextX, int nextY) {
         List<Animal> otherAnimals = getOtherAnimals(currentAnimal);
         for (Animal otherAnimal : otherAnimals) {
-            double distance = Math.sqrt(Math.pow(nextX - otherAnimal.getX(), 2) + Math.pow(nextY - otherAnimal.getY(), 2));
+            int distance = (int) Math.ceil(Math.sqrt(Math.pow(nextX - otherAnimal.getX(), 2) + Math.pow(nextY - otherAnimal.getY(), 2)));
             if (distance < context.getANIMAL_SIZE()) {
                 return true;
             }
@@ -51,7 +51,7 @@ public class MapFieldUtils {
         }
         return context.getPopulation()
                 .stream()
-                .filter(animal -> animal.getX() != currentAnimal.getX() && animal.getY() != currentAnimal.getY())
+                .filter(animal -> !(animal.getX() == currentAnimal.getX() && animal.getY() == currentAnimal.getY()))
                 .toList();
     }
 }
