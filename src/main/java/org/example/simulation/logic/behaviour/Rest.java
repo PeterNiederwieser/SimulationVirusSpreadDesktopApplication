@@ -1,4 +1,4 @@
-package org.example.simulation.logic.animalBehaviour.types;
+package org.example.simulation.logic.behaviour;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.BehaviourType;

@@ -5,6 +5,7 @@ import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
 
 import javax.swing.*;
+import javax.swing.text.FlowView;
 import java.awt.*;
 import java.util.List;
 
@@ -23,10 +24,66 @@ public class MapDisplayer extends JPanel {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(context.getMAP_WIDTH(), context.getMAP_HEIGHT() + context.getWINDOW_HEIGHT_CORRECTION());
-        frame.add(this);
+        frame.setLayout(new BorderLayout());
+        frame.add(this, BorderLayout.CENTER);
+        JPanel controlPanel = createControlPanel();
+        frame.add(controlPanel, BorderLayout.EAST);
+        frame.setSize(context.getFRAME_WIDTH(), context.getFRAME_HEIGHT());
         frame.setVisible(true);
         SwingUtilities.invokeLater(this::repaint);
+    }
+
+    private JPanel createControlPanel() {
+        JPanel controlPanel = new JPanel();
+        controlPanel.setSize(100, context.getFRAME_HEIGHT());
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(100, 10, 10, 100));
+        controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+        JLabel labelHeading = new JLabel("Virus Spread Simulation");
+        labelHeading.setLayout(new FlowLayout(FlowLayout.CENTER));
+        labelHeading.setFont(new Font("Calibri", Font.BOLD, 18));
+        controlPanel.add(labelHeading);
+
+        JSlider sliderInfectiousness = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_INFECTION() * 100);
+        sliderInfectiousness.setMinorTickSpacing(10);
+        sliderInfectiousness.setMajorTickSpacing(20);
+        sliderInfectiousness.setPaintTicks(true);
+        sliderInfectiousness.setPaintLabels(true);
+        sliderInfectiousness.addChangeListener(event -> {
+            JSlider source = (JSlider) event.getSource();
+            float value = source.getValue();
+            context.setPROBABILITY_OF_INFECTION(value / 100);
+        });
+        JLabel label = new JLabel("Virus-Infectiousness : ");
+        JPanel panelSlider = new JPanel();
+        panelSlider.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelSlider.add(label);
+        panelSlider.add(sliderInfectiousness);
+        controlPanel.add(panelSlider);
+
+        JPanel panelButtons = new JPanel();
+        panelButtons.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JButton buttonStart = new JButton("Start");
+        buttonStart.setPreferredSize(new Dimension(100,25));
+        JButton buttonPause = new JButton("Stop");
+        buttonPause.setPreferredSize(new Dimension(100,25));
+        buttonPause.addActionListener(event -> {
+            boolean isSimulationPaused = context.isSimulationPaused();
+            System.out.println(context.isSimulationPaused());
+            context.setSimulationPaused(!isSimulationPaused);
+            String newButtonText = context.isSimulationPaused() ? "Continue" : "Stop";
+            buttonPause.setText(newButtonText);
+            System.out.println(context.isSimulationPaused());
+        });
+        JButton buttonReset = new JButton("Reset");
+        buttonReset.setPreferredSize(new Dimension(100,25));
+
+        panelButtons.add(buttonStart);
+        panelButtons.add(buttonPause);
+        panelButtons.add(buttonReset);
+        controlPanel.add(panelButtons);
+
+        return controlPanel;
     }
 
     @Override
@@ -71,4 +128,5 @@ public class MapDisplayer extends JPanel {
             graphics.fillOval(x, y, ANIMAL_SIZE, ANIMAL_SIZE);
         });
     }
+
 }

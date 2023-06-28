@@ -1,11 +1,11 @@
-package org.example.simulation.logic.animalBehaviour.types;
+package org.example.simulation.logic.behaviour;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.BehaviourType;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
-public class Stroll implements org.example.simulation.logic.animalBehaviour.types.Behaviour {
+public class Stroll implements Behaviour {
     private final Context context;
     private final MapFieldUtils mapFieldUtils;
 

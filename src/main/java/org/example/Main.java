@@ -1,8 +1,8 @@
 package org.example;
 
-import org.example.simulation.logic.animalBehaviour.types.Behaviour;
-import org.example.simulation.logic.animalBehaviour.types.Rest;
-import org.example.simulation.logic.animalBehaviour.types.Stroll;
+import org.example.simulation.logic.behaviour.Behaviour;
+import org.example.simulation.logic.behaviour.Rest;
+import org.example.simulation.logic.behaviour.Stroll;
 import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.io.ColorHandler;
 import org.example.simulation.logic.io.MapCreator;

@@ -1,9 +1,9 @@
-package org.example.simulation.logic.animalBehaviour.types;
+package org.example.simulation.logic.behaviour;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.BehaviourType;
 
-public class HuntForFood implements org.example.simulation.logic.animalBehaviour.types.Behaviour {
+public class HuntForFood implements Behaviour {
     @Override
     public void behave(Animal animal) {
 

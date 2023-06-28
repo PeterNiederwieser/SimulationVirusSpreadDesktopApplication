@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Context {
-    private final float PROBABILITY_OF_INFECTION = 1.0F;
-    private final float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
+    private float PROBABILITY_OF_INFECTION = 1.0F;
+    private float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
     private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
@@ -20,13 +20,15 @@ public class Context {
     private final float MIN_ANIMAL_SPEED = 1F;
     private final int MAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE = 200;
     private final int DELAY_IN_MS = 40;
-    private final int COLOR_VALUE_RANGE = 50;
+    private final int COLOR_VALUE_RANGE = 40;
     private final int MAP_GENERATION_SCALE_FACTOR = 1;
     private final int MAP_WIDTH = 800;
     private final int MAP_HEIGHT = 800;
     private final int WINDOW_HEIGHT_CORRECTION = 37;
     private final int MIN_COLOR_VALUE = 0;
     private final int MAX_COLOR_VALUE = 255;
+    private final int FRAME_WIDTH = 1400;
+    private final int FRAME_HEIGHT = MAP_HEIGHT + WINDOW_HEIGHT_CORRECTION;
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");
     private final Color COLOR_INFECTED_ANIMAL = Color.decode("#fa602d");
     private final Color COLOR_RECOVERED_ANIMAL = Color.decode("#f5e616");
@@ -36,9 +38,11 @@ public class Context {
     private final Color COLOR_INACCESSIBLE_TERRAIN = Color.decode("#2C5F2D");
     private int stepNumber = 1;
     private boolean isSimulationOngoing = true;
+    private boolean isSimulationPaused = false;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
     private List<Animal> population = new ArrayList<>();
     private SurfaceType[][] map;
+    private String textForButtonPause = "Stop";
 
     public float getPROBABILITY_OF_INFECTION() {
         return PROBABILITY_OF_INFECTION;
@@ -190,5 +194,41 @@ public class Context {
 
     public int getWINDOW_HEIGHT_CORRECTION() {
         return WINDOW_HEIGHT_CORRECTION;
+    }
+
+    public int getFRAME_WIDTH() {
+        return FRAME_WIDTH;
+    }
+
+    public int getFRAME_HEIGHT() {
+        return FRAME_HEIGHT;
+    }
+
+    public void setPROBABILITY_OF_INFECTION(float PROBABILITY_OF_INFECTION) {
+        this.PROBABILITY_OF_INFECTION = PROBABILITY_OF_INFECTION;
+    }
+
+    public void setPROBABILITY_OF_FATAL_INFECTION_COURSE(float PROBABILITY_OF_FATAL_INFECTION_COURSE) {
+        this.PROBABILITY_OF_FATAL_INFECTION_COURSE = PROBABILITY_OF_FATAL_INFECTION_COURSE;
+    }
+
+    public void setSimulationOngoing(boolean simulationOngoing) {
+        isSimulationOngoing = simulationOngoing;
+    }
+
+    public boolean isSimulationPaused() {
+        return isSimulationPaused;
+    }
+
+    public void setSimulationPaused(boolean simulationPaused) {
+        isSimulationPaused = simulationPaused;
+    }
+
+    public String getTextForButtonPause() {
+        return textForButtonPause;
+    }
+
+    public void setTextForButtonPause(String textForButtonPause) {
+        this.textForButtonPause = textForButtonPause;
     }
 }

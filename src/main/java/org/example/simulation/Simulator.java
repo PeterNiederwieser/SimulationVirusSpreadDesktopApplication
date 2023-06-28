@@ -20,15 +20,24 @@ public class Simulator {
         this.mapCreator = mapCreator;
         this.initializer = initializer;
     }
+
     public void simulate() throws IOException {
         initializer.initializeSimulation();
         do {
-            simulatePhases();
-        } while(context.isSimulationOngoing());
+            if (!context.isSimulationPaused()) {
+                simulatePhases();
+            } else {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } while (context.isSimulationOngoing());
     }
 
     private void simulatePhases() {
-        for(Phase phase : phases) {
+        for (Phase phase : phases) {
             phase.perform(context);
         }
     }
