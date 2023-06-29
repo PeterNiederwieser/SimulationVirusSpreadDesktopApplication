@@ -26,6 +26,7 @@ public class MapDisplayer extends JPanel {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setLayout(new BorderLayout());
+        frame.setResizable(true);
         JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
         //labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
         labelHeading1.setFont(new Font("Calibri", Font.BOLD, 18));
@@ -45,7 +46,7 @@ public class MapDisplayer extends JPanel {
     private JPanel createControlPanel() {
         JPanel controlPanel = new JPanel();
         controlPanel.setPreferredSize(new Dimension(800, 300));
-        controlPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 10));
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 10));
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
         JLabel labelHeading2 = new JLabel("Adjust some simulation parameters:");
         labelHeading2.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -64,11 +65,10 @@ public class MapDisplayer extends JPanel {
             actualizePopulation();
         });
         JLabel labelNumberOfAnimals = new JLabel("Number of animals:    ");
-        JPanel panelSliderNumberOfAnimals = new JPanel();
-        panelSliderNumberOfAnimals.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panelSliderNumberOfAnimals.add(labelNumberOfAnimals);
-        panelSliderNumberOfAnimals.add(sliderNumberOfAnimals);
-        controlPanel.add(panelSliderNumberOfAnimals);
+        JPanel panelSliderFirstRow = new JPanel();
+        panelSliderFirstRow.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelSliderFirstRow.add(labelNumberOfAnimals);
+        panelSliderFirstRow.add(sliderNumberOfAnimals);
 
         JSlider sliderInitialInfections = new JSlider(JSlider.HORIZONTAL, 0, 100, context.getNUMBER_OF_INITIAL_INFECTIONS());
         sliderInitialInfections.setMinorTickSpacing(10);
@@ -82,11 +82,9 @@ public class MapDisplayer extends JPanel {
             actualizeInfections(value);
         });
         JLabel labelInitialInfections = new JLabel("                                  Initial infections:          ");
-        JPanel panelSliderInitialInfections = new JPanel();
-        panelSliderInitialInfections.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panelSliderNumberOfAnimals.add(labelInitialInfections);
-        panelSliderNumberOfAnimals.add(sliderInitialInfections);
-        //controlPanel.add(panelSliderInitialInfections);
+        panelSliderFirstRow.add(labelInitialInfections);
+        panelSliderFirstRow.add(sliderInitialInfections);
+        controlPanel.add(panelSliderFirstRow);
 
         JSlider sliderInfectiousness = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_INFECTION() * 100);
         sliderInfectiousness.setMinorTickSpacing(10);
@@ -99,11 +97,10 @@ public class MapDisplayer extends JPanel {
             context.setPROBABILITY_OF_INFECTION(value / 100);
         });
         JLabel labelInfectiousness = new JLabel("Virus-Infectiousness:  ");
-        JPanel panelSliderInfectiousness = new JPanel();
-        panelSliderInfectiousness.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panelSliderInfectiousness.add(labelInfectiousness);
-        panelSliderInfectiousness.add(sliderInfectiousness);
-        controlPanel.add(panelSliderInfectiousness);
+        JPanel panelSliderSecondRow = new JPanel();
+        panelSliderSecondRow.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelSliderSecondRow.add(labelInfectiousness);
+        panelSliderSecondRow.add(sliderInfectiousness);
 
         JSlider sliderLethality = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_FATAL_INFECTION_COURSE() * 100);
         sliderLethality.setMinorTickSpacing(10);
@@ -115,15 +112,19 @@ public class MapDisplayer extends JPanel {
             float value = source.getValue();
             context.setPROBABILITY_OF_FATAL_INFECTION_COURSE(value / 100);
         });
-        JLabel labelLethality = new JLabel("Mortality rate:              ");
-        JPanel panelSliderLethality = new JPanel();
-        panelSliderLethality.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panelSliderLethality.add(labelLethality);
-        panelSliderLethality.add(sliderLethality);
-        controlPanel.add(panelSliderLethality);
+        JLabel labelLethality = new JLabel("                                  Mortality rate:              ");
+        panelSliderSecondRow.add(labelLethality);
+        panelSliderSecondRow.add(sliderLethality);
+        controlPanel.add(panelSliderSecondRow);
 
         JPanel panelButtons = new JPanel();
         panelButtons.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JLabel labelCheckboxCharts = new JLabel("Show Chart Data                                        ");
+        JCheckBox checkBoxCharts = new JCheckBox();
+        checkBoxCharts.addActionListener(event -> {
+            context.setChartDataShown(!context.isChartDataShown());
+        });
 
         JButton buttonStart = new JButton("Start");
         buttonStart.addActionListener(event -> {
@@ -149,6 +150,8 @@ public class MapDisplayer extends JPanel {
         });
         buttonEnd.setPreferredSize(new Dimension(100, 25));
 
+        panelButtons.add(checkBoxCharts);
+        panelButtons.add(labelCheckboxCharts);
         panelButtons.add(buttonStart);
         panelButtons.add(buttonPause);
         panelButtons.add(buttonEnd);

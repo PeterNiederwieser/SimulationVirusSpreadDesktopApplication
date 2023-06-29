@@ -25,7 +25,7 @@ public class ChartLines2 {
         dataset = createDataset(context);
         chart = createChart(dataset);
         JPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setSize(700, 500);
+        chartPanel.setSize(350, 350);
         return chartPanel;
     }
 
@@ -77,10 +77,10 @@ public class ChartLines2 {
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
         renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesPaint(1, Color.GREEN);
+        renderer.setSeriesPaint(1, Color.BLACK);
 
         renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(1, new BasicStroke(3.0f));
+        renderer.setSeriesStroke(1, new BasicStroke(4.0f));
 
         plot.setOutlinePaint(Color.BLACK);
         plot.setOutlineStroke(new BasicStroke(2.0f));

@@ -49,8 +49,8 @@ public class Context {
     private SurfaceType[][] map;
     private String textForButtonPause = "Stop";
     private int numberOfAnimalDeathsInCurrentTimeInterval;
-
     private int numberOfNewInfectionsInCurrentTimeInterval;
+    private boolean isChartDataShown = false;
 
     public float getPROBABILITY_OF_INFECTION() {
         return PROBABILITY_OF_INFECTION;
@@ -302,5 +302,13 @@ public class Context {
 
     public void setNumberOfNewInfectionsInCurrentTimeInterval(int numberOfNewInfectionsInCurrentTimeInterval) {
         this.numberOfNewInfectionsInCurrentTimeInterval = numberOfNewInfectionsInCurrentTimeInterval;
+    }
+
+    public boolean isChartDataShown() {
+        return isChartDataShown;
+    }
+
+    public void setChartDataShown(boolean chartDataShown) {
+        this.isChartDataShown = chartDataShown;
     }
 }

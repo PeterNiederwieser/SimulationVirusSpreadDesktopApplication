@@ -12,7 +12,7 @@ public class Diagrams implements Phase {
 
     @Override
     public void perform(Context context) {
-        if (context.getStepNumber() % 24 == 0) {
+        if (context.getStepNumber() % 24 == 0 && context.isChartDataShown()) {
             chartLines2.updateChart(context);
         }
     }
