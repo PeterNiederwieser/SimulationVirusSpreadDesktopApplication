@@ -21,6 +21,7 @@ public class Dying implements Phase {
             if (isAnimalDying(animal, context)) {
                 List<Animal> population = context.getPopulation();
                 population.remove(animal);
+                context.setNumberOfAnimalDeathsInCurrentTimeInterval(context.getNumberOfAnimalDeathsInCurrentTimeInterval()+1);
             }
         });
     }

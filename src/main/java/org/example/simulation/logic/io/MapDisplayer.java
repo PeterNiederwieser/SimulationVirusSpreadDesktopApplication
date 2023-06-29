@@ -1,49 +1,54 @@
 package org.example.simulation.logic.io;
 
 import org.example.simulation.data.*;
-import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MapDisplayer extends JPanel {
     private final Context context;
     private final int MAP_GENERATION_SCALE_FACTOR;
     private final ColorHandler colorHandler;
     private final MapFieldUtils mapFieldUtils;
+    private final ChartLines2 chartLines2;
 
-    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils) {
+    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines2 chartLines2) {
         this.context = context;
         this.MAP_GENERATION_SCALE_FACTOR = context.getMAP_GENERATION_SCALE_FACTOR();
         this.colorHandler = colorHandler;
         this.mapFieldUtils = mapFieldUtils;
+        this.chartLines2 = chartLines2;
     }
 
     public void displayMap() {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
+        JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
+        labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
+        labelHeading1.setFont(new Font("Calibri", Font.BOLD, 18));
+        frame.add(labelHeading1, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(this, BorderLayout.CENTER);
         JPanel controlPanel = createControlPanel();
-        frame.add(controlPanel, BorderLayout.EAST);
+        frame.add(controlPanel, BorderLayout.SOUTH);
         frame.setSize(context.getFRAME_WIDTH(), context.getFRAME_HEIGHT());
         frame.setVisible(true);
+        chartLines2.createChart(context);
         SwingUtilities.invokeLater(this::repaint);
     }
 
     private JPanel createControlPanel() {
         JPanel controlPanel = new JPanel();
-        controlPanel.setSize(100, context.getFRAME_HEIGHT());
-        controlPanel.setBorder(BorderFactory.createEmptyBorder(100, 10, 10, 100));
+        controlPanel.setPreferredSize(new Dimension(800, 300));
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 10));
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
-        JLabel labelHeading = new JLabel("Virus Spread Simulation");
-        labelHeading.setLayout(new FlowLayout(FlowLayout.CENTER));
-        labelHeading.setFont(new Font("Calibri", Font.BOLD, 18));
-        controlPanel.add(labelHeading);
+        JLabel labelHeading2 = new JLabel("Adjust some simulation parameters:");
+        labelHeading2.setLayout(new FlowLayout(FlowLayout.CENTER));
+        labelHeading2.setFont(new Font("Calibri", Font.BOLD, 18));
+        controlPanel.add(labelHeading2);
 
         JSlider sliderNumberOfAnimals = new JSlider(JSlider.HORIZONTAL, 0, 1000, context.getNUMBER_OF_ANIMALS());
         sliderNumberOfAnimals.setMinorTickSpacing(100);
@@ -56,9 +61,9 @@ public class MapDisplayer extends JPanel {
             context.setNUMBER_OF_ANIMALS(value);
             actualizePopulation();
         });
-        JLabel labelNumberOfAnimals = new JLabel("Number of animals:     ");
+        JLabel labelNumberOfAnimals = new JLabel("Number of animals:    ");
         JPanel panelSliderNumberOfAnimals = new JPanel();
-        panelSliderNumberOfAnimals.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelSliderNumberOfAnimals.setLayout(new FlowLayout(FlowLayout.CENTER));
         panelSliderNumberOfAnimals.add(labelNumberOfAnimals);
         panelSliderNumberOfAnimals.add(sliderNumberOfAnimals);
         controlPanel.add(panelSliderNumberOfAnimals);
@@ -74,12 +79,12 @@ public class MapDisplayer extends JPanel {
             context.setNUMBER_OF_INITIAL_INFECTIONS(value);
             actualizeInfections(value);
         });
-        JLabel labelInitialInfections = new JLabel("Initial infections:          ");
+        JLabel labelInitialInfections = new JLabel("                                  Initial infections:          ");
         JPanel panelSliderInitialInfections = new JPanel();
-        panelSliderInitialInfections.setLayout(new FlowLayout(FlowLayout.LEFT));
-        panelSliderInitialInfections.add(labelInitialInfections);
-        panelSliderInitialInfections.add(sliderInitialInfections);
-        controlPanel.add(panelSliderInitialInfections);
+        panelSliderInitialInfections.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelSliderNumberOfAnimals.add(labelInitialInfections);
+        panelSliderNumberOfAnimals.add(sliderInitialInfections);
+        //controlPanel.add(panelSliderInitialInfections);
 
         JSlider sliderInfectiousness = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_INFECTION() * 100);
         sliderInfectiousness.setMinorTickSpacing(10);
@@ -93,7 +98,7 @@ public class MapDisplayer extends JPanel {
         });
         JLabel labelInfectiousness = new JLabel("Virus-Infectiousness:  ");
         JPanel panelSliderInfectiousness = new JPanel();
-        panelSliderInfectiousness.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelSliderInfectiousness.setLayout(new FlowLayout(FlowLayout.CENTER));
         panelSliderInfectiousness.add(labelInfectiousness);
         panelSliderInfectiousness.add(sliderInfectiousness);
         controlPanel.add(panelSliderInfectiousness);
@@ -110,7 +115,7 @@ public class MapDisplayer extends JPanel {
         });
         JLabel labelLethality = new JLabel("Mortality rate:              ");
         JPanel panelSliderLethality = new JPanel();
-        panelSliderLethality.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelSliderLethality.setLayout(new FlowLayout(FlowLayout.CENTER));
         panelSliderLethality.add(labelLethality);
         panelSliderLethality.add(sliderLethality);
         controlPanel.add(panelSliderLethality);

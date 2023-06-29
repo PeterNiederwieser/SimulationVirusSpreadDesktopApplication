@@ -38,5 +38,9 @@ public class ApplicationRunner {
     private void resetSimulationParameters(Context context, DefaultContext defaultContext) {
         context.setStepNumber(1);
         context.setPopulation(new ArrayList<>());
+        context.setInfectionNumbersForCharts(new ArrayList<>());
+        context.setLethalInfectionNumbersForCharts(new ArrayList<>());
+        context.setRecoveredAnimalNumbersForCharts(new ArrayList<>());
+        context.setRecoveredAnimalNumbersForCharts(new ArrayList<>());
     }
 }

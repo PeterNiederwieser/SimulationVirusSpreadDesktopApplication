@@ -27,8 +27,12 @@ public class Context {
     private final int WINDOW_HEIGHT_CORRECTION = 37;
     private final int MIN_COLOR_VALUE = 0;
     private final int MAX_COLOR_VALUE = 255;
-    private final int FRAME_WIDTH = 1400;
-    private final int FRAME_HEIGHT = MAP_HEIGHT + WINDOW_HEIGHT_CORRECTION;
+    private final int FRAME_WIDTH = 1850;
+    private final int FRAME_HEIGHT = 1200;
+    private List<Integer> infectionNumbersForCharts = new ArrayList<>();
+    private List<Integer> lethalInfectionNumbersForCharts = new ArrayList<>();
+    private List<Integer> uninfectedAnimalNumbersForCharts = new ArrayList<>();
+    private List<Integer> recoveredAnimalNumbersForCharts = new ArrayList<>();
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");
     private final Color COLOR_INFECTED_ANIMAL = Color.decode("#fa602d");
     private final Color COLOR_RECOVERED_ANIMAL = Color.decode("#f5e616");
@@ -44,6 +48,9 @@ public class Context {
     private List<Animal> population = new ArrayList<>();
     private SurfaceType[][] map;
     private String textForButtonPause = "Stop";
+    private int numberOfAnimalDeathsInCurrentTimeInterval;
+
+    private int numberOfNewInfectionsInCurrentTimeInterval;
 
     public float getPROBABILITY_OF_INFECTION() {
         return PROBABILITY_OF_INFECTION;
@@ -247,5 +254,53 @@ public class Context {
 
     public void setNUMBER_OF_INITIAL_INFECTIONS(int NUMBER_OF_INITIAL_INFECTIONS) {
         this.NUMBER_OF_INITIAL_INFECTIONS = NUMBER_OF_INITIAL_INFECTIONS;
+    }
+
+    public List<Integer> getInfectionNumbersForCharts() {
+        return infectionNumbersForCharts;
+    }
+
+    public List<Integer> getLethalInfectionNumbersForCharts() {
+        return lethalInfectionNumbersForCharts;
+    }
+
+    public List<Integer> getUninfectedAnimalNumbersForCharts() {
+        return uninfectedAnimalNumbersForCharts;
+    }
+
+    public List<Integer> getRecoveredAnimalNumbersForCharts() {
+        return recoveredAnimalNumbersForCharts;
+    }
+
+    public void setInfectionNumbersForCharts(List<Integer> infectionNumbersForCharts) {
+        this.infectionNumbersForCharts = infectionNumbersForCharts;
+    }
+
+    public void setLethalInfectionNumbersForCharts(List<Integer> lethalInfectionNumbersForCharts) {
+        this.lethalInfectionNumbersForCharts = lethalInfectionNumbersForCharts;
+    }
+
+    public void setUninfectedAnimalNumbersForCharts(List<Integer> uninfectedAnimalNumbersForCharts) {
+        this.uninfectedAnimalNumbersForCharts = uninfectedAnimalNumbersForCharts;
+    }
+
+    public void setRecoveredAnimalNumbersForCharts(List<Integer> recoveredAnimalNumbersForCharts) {
+        this.recoveredAnimalNumbersForCharts = recoveredAnimalNumbersForCharts;
+    }
+
+    public int getNumberOfAnimalDeathsInCurrentTimeInterval() {
+        return numberOfAnimalDeathsInCurrentTimeInterval;
+    }
+
+    public void setNumberOfAnimalDeathsInCurrentTimeInterval(int numberOfAnimalDeathsInCurrentTimeInterval) {
+        this.numberOfAnimalDeathsInCurrentTimeInterval = numberOfAnimalDeathsInCurrentTimeInterval;
+    }
+
+    public int getNumberOfNewInfectionsInCurrentTimeInterval() {
+        return numberOfNewInfectionsInCurrentTimeInterval;
+    }
+
+    public void setNumberOfNewInfectionsInCurrentTimeInterval(int numberOfNewInfectionsInCurrentTimeInterval) {
+        this.numberOfNewInfectionsInCurrentTimeInterval = numberOfNewInfectionsInCurrentTimeInterval;
     }
 }

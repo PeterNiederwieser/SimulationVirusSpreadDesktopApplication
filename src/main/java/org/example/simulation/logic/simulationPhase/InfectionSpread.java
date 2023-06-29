@@ -33,6 +33,7 @@ public class InfectionSpread implements Phase {
         float PROBABILITY_OF_INFECTION = context.getPROBABILITY_OF_INFECTION();
         if (Math.random() <= PROBABILITY_OF_INFECTION) {
             animal.setHealthState(HealthState.INFECTED);
+            context.setNumberOfNewInfectionsInCurrentTimeInterval(context.getNumberOfNewInfectionsInCurrentTimeInterval()+1);
             animal.setMomentOfInfection(context.getStepNumber());
             animal.setMax_speed(context.getMAX_INFECTED_ANIMAL_SPEED());
         }
