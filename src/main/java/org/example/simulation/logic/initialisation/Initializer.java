@@ -33,6 +33,11 @@ public class Initializer {
         mapDisplayer.displayMap();
     }
 
+    public void reInitializeSimulation() {
+        setInitializedPopulation();
+        initializeStartingStateOfInfections();
+    }
+
     private void initializeStartingStateOfInfections() {
         List<Animal> population = context.getPopulation();
         int NUMBER_OF_INITIAL_INFECTIONS = context.getNUMBER_OF_INITIAL_INFECTIONS();

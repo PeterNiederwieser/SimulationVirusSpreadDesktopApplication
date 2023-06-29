@@ -1,17 +1,20 @@
-package org.example.simulation.data;
+package org.example.simulation;
+
+import org.example.simulation.data.Animal;
+import org.example.simulation.data.SurfaceType;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Context {
+public class DefaultContext {
     private float PROBABILITY_OF_INFECTION = 1.0F;
     private float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
     private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
     private int NUMBER_OF_ANIMALS = 200;
-    private int NUMBER_OF_INITIAL_INFECTIONS = 20;
+    private final int NUMBER_OF_INITIAL_INFECTIONS = 20;
     private final int INFECTION_RADIUS = 10;
     private final int ANIMAL_SIZE = 10;
     private final float MAX_ANIMAL_SPEED = 2.5F;
@@ -37,11 +40,11 @@ public class Context {
     private final Color COLOR_ACCESSIBLE_TERRAIN = Color.decode("#97BC62");
     private final Color COLOR_INACCESSIBLE_TERRAIN = Color.decode("#2C5F2D");
     private int stepNumber = 1;
-    private boolean isSimulationOngoing = false;
+    private boolean isSimulationOngoing = true;
     private boolean isSimulationPaused = false;
     private boolean shouldSimulationRestart = false;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
-    private List<Animal> population = new ArrayList<>();
+    private java.util.List<Animal> population = new ArrayList<>();
     private SurfaceType[][] map;
     private String textForButtonPause = "Stop";
 
@@ -73,7 +76,7 @@ public class Context {
         this.stepNumber = stepNumber;
     }
 
-    public List<Animal> getPopulation() {
+    public java.util.List<Animal> getPopulation() {
         return population;
     }
 
@@ -243,9 +246,5 @@ public class Context {
 
     public void setNUMBER_OF_ANIMALS(int NUMBER_OF_ANIMALS) {
         this.NUMBER_OF_ANIMALS = NUMBER_OF_ANIMALS;
-    }
-
-    public void setNUMBER_OF_INITIAL_INFECTIONS(int NUMBER_OF_INITIAL_INFECTIONS) {
-        this.NUMBER_OF_INITIAL_INFECTIONS = NUMBER_OF_INITIAL_INFECTIONS;
     }
 }

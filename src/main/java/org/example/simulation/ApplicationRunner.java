@@ -4,6 +4,7 @@ import org.example.simulation.data.Context;
 import org.example.simulation.logic.initialisation.Initializer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ApplicationRunner {
     private final Initializer initializer;
@@ -14,19 +15,28 @@ public class ApplicationRunner {
         this.simulator = simulator;
     }
 
-    public void runProgram(Context context) throws IOException {
+    public void runProgram(Context context, DefaultContext defaultContext) throws IOException {
         initializer.initializeSimulation();
-        do {
-            if (context.isShouldSimulationRestart()) {
-                context.setShouldSimulationRestart(false);
-                initializer.initializeSimulation();
+        while (true) {
+            if (context.isSimulationOngoing()) {
+                if (context.isShouldSimulationRestart()) {
+                    context.setShouldSimulationRestart(false);
+                    resetSimulationParameters(context, defaultContext);
+                    initializer.reInitializeSimulation();
+                }
+                simulator.simulate();
+            } else {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            simulator.simulate();
-        } while (context.isSimulationOngoing());
+        }
     }
 
-    private void resetSimulationParameters() {
-
+    private void resetSimulationParameters(Context context, DefaultContext defaultContext) {
+        context.setStepNumber(1);
+        context.setPopulation(new ArrayList<>());
     }
-
 }

@@ -33,7 +33,7 @@ public class Simulator {
                     e.printStackTrace();
                 }
             }
-        } while (context.isSimulationOngoing());
+        } while (context.isSimulationOngoing() && !context.isShouldSimulationRestart());
     }
 
     private void simulatePhases() {

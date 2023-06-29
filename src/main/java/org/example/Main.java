@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.simulation.ApplicationRunner;
+import org.example.simulation.DefaultContext;
 import org.example.simulation.logic.behaviour.Behaviour;
 import org.example.simulation.logic.behaviour.Rest;
 import org.example.simulation.logic.behaviour.Stroll;
@@ -23,11 +24,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Context context = new Context();
+        DefaultContext defaultContext = new DefaultContext();
         ColorHandler colorHandler = new ColorHandler(context);
         MapPrinter mapPrinter = new MapPrinter(colorHandler);
         PhaseUtils phaseUtils = new PhaseUtils(context);
         MapFieldUtils mapFieldUtils = new MapFieldUtils(context);
-        MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler);
+        MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler, mapFieldUtils);
         MapCreator mapCreator = new MapCreator(context);
         List<Behaviour> behaviours = List.of(
                 new Stroll(context, mapFieldUtils),
@@ -45,6 +47,6 @@ public class Main {
         Initializer initializer = new Initializer(context, mapCreator, mapDisplayer, mapFieldUtils, mapPrinter);
         Simulator simulator = new Simulator(context, phases, mapCreator, initializer);
         ApplicationRunner applicationRunner = new ApplicationRunner(initializer, simulator);
-        applicationRunner.runProgram(context);
+        applicationRunner.runProgram(context, defaultContext);
     }
 }
