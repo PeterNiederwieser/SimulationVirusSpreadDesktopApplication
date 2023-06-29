@@ -25,8 +25,9 @@ public class MapDisplayer extends JPanel {
     public void displayMap() {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
+        frame.setLayout(new BorderLayout());
         JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
-        labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
+        //labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
         labelHeading1.setFont(new Font("Calibri", Font.BOLD, 18));
         frame.add(labelHeading1, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,8 +36,9 @@ public class MapDisplayer extends JPanel {
         JPanel controlPanel = createControlPanel();
         frame.add(controlPanel, BorderLayout.SOUTH);
         frame.setSize(context.getFRAME_WIDTH(), context.getFRAME_HEIGHT());
+        JPanel chartPanel1 = chartLines2.getChartLinesPanel(context);
+        frame.add(chartPanel1, BorderLayout.EAST);
         frame.setVisible(true);
-        chartLines2.createChart(context);
         SwingUtilities.invokeLater(this::repaint);
     }
 

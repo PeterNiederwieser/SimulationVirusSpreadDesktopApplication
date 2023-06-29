@@ -3,7 +3,6 @@ package org.example.simulation.logic.io;
 import org.example.simulation.data.Context;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
@@ -14,71 +13,67 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class ChartLines {
+    private XYSeries series1;
+    private XYSeries series2;
+    private XYSeriesCollection dataset;
+    private JFreeChart chart;
 
     public void createChart(Context context) {
-
-
+        dataset = createDataset(context);
+        chart = createChart(dataset);
         JFrame frame = new JFrame();
-        JPanel chartPanel = createChartPanel(context);
+        JPanel chartPanel = new ChartPanel(chart);
         frame.add(chartPanel, BorderLayout.CENTER);
         frame.setSize(700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
     }
 
-    private JPanel createChartPanel(Context context) {
+    public void updateChart(Context context) {
+        updateDataset(context);
+    }
+
+    private XYSeriesCollection createDataset(Context context) {
+        dataset = new XYSeriesCollection();
+        series1 = new XYSeries("Infected animals");
+        series2 = new XYSeries("Dead animals");
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
+        updateDataset(context);
+        return dataset;
+    }
+
+    private void updateDataset(Context context) {
+        List<Integer> infectionNumbersForCharts = context.getInfectionNumbersForCharts();
+        List<Integer> lethalInfectionNumbersForCharts = context.getLethalInfectionNumbersForCharts();
+
+        series1.clear();
+        series2.clear();
+
+        for (int i = 0; i < infectionNumbersForCharts.size(); i++) {
+            series1.add(i + 1, infectionNumbersForCharts.get(i));
+        }
+
+        for (int i = 0; i < lethalInfectionNumbersForCharts.size(); i++) {
+            series2.add(i + 1, lethalInfectionNumbersForCharts.get(i));
+        }
+    }
+
+    private JFreeChart createChart(XYDataset dataset) {
         String chartTitle = "Number of infected / dead animals";
         String xAxisLabel = "time";
         String yAxisLabel = "Number of animals";
-
-        XYDataset dataset = createDataset(context);
 
         JFreeChart chart = ChartFactory.createXYLineChart(chartTitle,
                 xAxisLabel, yAxisLabel, dataset, PlotOrientation.VERTICAL, true, true, true);
 
         customizeChart(chart);
 
-        File imageFile = new File("NumberOfInfected/DeadAnimals.png");
-        int width = 700;
-        int height = 580;
-
-        try {
-            ChartUtilities.saveChartAsPNG(imageFile, chart, width, height);
-        } catch (IOException ex) {
-            System.err.println(ex);
-        }
-
-        return new ChartPanel(chart);
-    }
-
-    private XYDataset createDataset(Context context) {
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        XYSeries series1 = new XYSeries("Infected animals");
-        XYSeries series2 = new XYSeries("Dead animals");
-
-        int numberOfAnimals = context.getPopulation().size();
-        List<Integer> infectionNumbersForCharts = context.getInfectionNumbersForCharts();
-        List<Integer> lethalInfectionNumbersForCharts = context.getLethalInfectionNumbersForCharts();
-
-        for (int i = 1; i <= infectionNumbersForCharts.size(); i++) {
-            series1.add(i, infectionNumbersForCharts.get(i));
-        }
-
-        for (int i = 1; i <= lethalInfectionNumbersForCharts.size(); i++) {
-            series1.add(i, lethalInfectionNumbersForCharts.get(i));
-        }
-
-        dataset.addSeries(series1);
-        dataset.addSeries(series2);
-
-        return dataset;
+        return chart;
     }
 
     private void customizeChart(JFreeChart chart) {
@@ -103,7 +98,5 @@ public class ChartLines {
 
         plot.setDomainGridlinesVisible(true);
         plot.setDomainGridlinePaint(Color.BLACK);
-
     }
 }
-

@@ -21,18 +21,12 @@ public class ChartLines2 {
     private XYSeriesCollection dataset;
     private JFreeChart chart;
 
-    public void createChart(Context context) {
+    public JPanel getChartLinesPanel(Context context) {
         dataset = createDataset(context);
         chart = createChart(dataset);
-
-        JFrame frame = new JFrame();
         JPanel chartPanel = new ChartPanel(chart);
-        frame.add(chartPanel, BorderLayout.CENTER);
-        frame.setSize(700, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-
+        chartPanel.setSize(700, 500);
+        return chartPanel;
     }
 
     public void updateChart(Context context) {
