@@ -53,6 +53,18 @@ public class MapDisplayer extends JPanel {
             float value = source.getValue();
             context.setPROBABILITY_OF_INFECTION(value / 100);
         });
+
+        JSlider sliderNumberOfAnimals = new JSlider(JSlider.HORIZONTAL, 10, 1000, context.getNUMBER_OF_ANIMALS());
+        sliderInfectiousness.setMinorTickSpacing(10);
+        sliderInfectiousness.setMajorTickSpacing(100);
+        sliderInfectiousness.setPaintTicks(true);
+        sliderInfectiousness.setPaintLabels(true);
+        sliderInfectiousness.addChangeListener(event -> {
+            JSlider source = (JSlider) event.getSource();
+            int value = source.getValue();
+            context.setNUMBER_OF_ANIMALS(value);
+        });
+
         JLabel label = new JLabel("Virus-Infectiousness : ");
         JPanel panelSlider = new JPanel();
         panelSlider.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -63,24 +75,28 @@ public class MapDisplayer extends JPanel {
         JPanel panelButtons = new JPanel();
         panelButtons.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        JButton buttonStart = new JButton("Start");
+        JButton buttonStart = new JButton("Restart");
+        buttonStart.addActionListener(event -> {
+            buttonStart.setText("Restart");
+        });
         buttonStart.setPreferredSize(new Dimension(100,25));
         JButton buttonPause = new JButton("Stop");
         buttonPause.setPreferredSize(new Dimension(100,25));
         buttonPause.addActionListener(event -> {
             boolean isSimulationPaused = context.isSimulationPaused();
-            System.out.println(context.isSimulationPaused());
             context.setSimulationPaused(!isSimulationPaused);
             String newButtonText = context.isSimulationPaused() ? "Continue" : "Stop";
             buttonPause.setText(newButtonText);
-            System.out.println(context.isSimulationPaused());
         });
-        JButton buttonReset = new JButton("Reset");
-        buttonReset.setPreferredSize(new Dimension(100,25));
+        JButton buttonEnd = new JButton("End");
+        buttonEnd.addActionListener(event -> {
+            System.exit(0);
+        });
+        buttonEnd.setPreferredSize(new Dimension(100,25));
 
         panelButtons.add(buttonStart);
         panelButtons.add(buttonPause);
-        panelButtons.add(buttonReset);
+        panelButtons.add(buttonEnd);
         controlPanel.add(panelButtons);
 
         return controlPanel;

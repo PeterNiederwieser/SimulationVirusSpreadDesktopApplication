@@ -10,7 +10,7 @@ public class Context {
     private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
-    private final int NUMBER_OF_ANIMALS = 200;
+    private int NUMBER_OF_ANIMALS = 200;
     private final int NUMBER_OF_INITIAL_INFECTIONS = 20;
     private final int INFECTION_RADIUS = 10;
     private final int ANIMAL_SIZE = 10;
@@ -39,6 +39,7 @@ public class Context {
     private int stepNumber = 1;
     private boolean isSimulationOngoing = true;
     private boolean isSimulationPaused = false;
+    private boolean shouldSimulationRestart = false;
     private final String filePathOfMapImage = "src/main/resources/MapImage_by_DALL·E .png";
     private List<Animal> population = new ArrayList<>();
     private SurfaceType[][] map;
@@ -230,5 +231,17 @@ public class Context {
 
     public void setTextForButtonPause(String textForButtonPause) {
         this.textForButtonPause = textForButtonPause;
+    }
+
+    public boolean isShouldSimulationRestart() {
+        return shouldSimulationRestart;
+    }
+
+    public void setShouldSimulationRestart(boolean shouldSimulationRestart) {
+        this.shouldSimulationRestart = shouldSimulationRestart;
+    }
+
+    public void setNUMBER_OF_ANIMALS(int NUMBER_OF_ANIMALS) {
+        this.NUMBER_OF_ANIMALS = NUMBER_OF_ANIMALS;
     }
 }

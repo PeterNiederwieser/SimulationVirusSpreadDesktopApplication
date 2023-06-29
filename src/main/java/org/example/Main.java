@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.simulation.ApplicationRunner;
 import org.example.simulation.logic.behaviour.Behaviour;
 import org.example.simulation.logic.behaviour.Rest;
 import org.example.simulation.logic.behaviour.Stroll;
@@ -41,9 +42,9 @@ public class Main {
                 new Graphic(mapDisplayer),
                 new StepIncrement()
         );
-
         Initializer initializer = new Initializer(context, mapCreator, mapDisplayer, mapFieldUtils, mapPrinter);
         Simulator simulator = new Simulator(context, phases, mapCreator, initializer);
-        simulator.simulate();
+        ApplicationRunner applicationRunner = new ApplicationRunner(initializer, simulator);
+        applicationRunner.runProgram(context);
     }
 }

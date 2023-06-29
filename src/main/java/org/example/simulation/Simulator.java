@@ -22,7 +22,7 @@ public class Simulator {
     }
 
     public void simulate() throws IOException {
-        initializer.initializeSimulation();
+        // initializer.initializeSimulation();
         do {
             if (!context.isSimulationPaused()) {
                 simulatePhases();
