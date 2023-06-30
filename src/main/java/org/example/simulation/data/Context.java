@@ -33,6 +33,7 @@ public class Context {
     private List<Integer> lethalInfectionNumbersForCharts = new ArrayList<>();
     private List<Integer> uninfectedAnimalNumbersForCharts = new ArrayList<>();
     private List<Integer> recoveredAnimalNumbersForCharts = new ArrayList<>();
+    private int totalNumberOfDeadAnimals = 0;
     private final Color COLOR_HEALTHY_ANIMAL = Color.decode("#38f5f5");
     private final Color COLOR_INFECTED_ANIMAL = Color.decode("#fa602d");
     private final Color COLOR_RECOVERED_ANIMAL = Color.decode("#f5e616");
@@ -51,6 +52,10 @@ public class Context {
     private int numberOfAnimalDeathsInCurrentTimeInterval;
     private int numberOfNewInfectionsInCurrentTimeInterval;
     private boolean isChartDataShown = false;
+
+    private int totalNumberOfInfectedAnimals;
+    private int totalNumberOfHealthyAnimals;
+    private int totalNumberOfRecoveredAnimals;
 
     public float getPROBABILITY_OF_INFECTION() {
         return PROBABILITY_OF_INFECTION;
@@ -310,5 +315,37 @@ public class Context {
 
     public void setChartDataShown(boolean chartDataShown) {
         this.isChartDataShown = chartDataShown;
+    }
+
+    public int getTotalNumberOfDeadAnimals() {
+        return totalNumberOfDeadAnimals;
+    }
+
+    public void setTotalNumberOfDeadAnimals(int totalNumberOfDeadAnimals) {
+        this.totalNumberOfDeadAnimals = totalNumberOfDeadAnimals;
+    }
+
+    public int getTotalNumberOfInfectedAnimals() {
+        return totalNumberOfInfectedAnimals;
+    }
+
+    public void setTotalNumberOfInfectedAnimals(int totalNumberOfInfectedAnimals) {
+        this.totalNumberOfInfectedAnimals = totalNumberOfInfectedAnimals;
+    }
+
+    public int getTotalNumberOfHealthyAnimals() {
+        return totalNumberOfHealthyAnimals;
+    }
+
+    public void setTotalNumberOfHealthyAnimals(int totalNumberOfHealthyAnimals) {
+        this.totalNumberOfHealthyAnimals = totalNumberOfHealthyAnimals;
+    }
+
+    public int getTotalNumberOfRecoveredAnimals() {
+        return totalNumberOfRecoveredAnimals;
+    }
+
+    public void setTotalNumberOfRecoveredAnimals(int totalNumberOfRecoveredAnimals) {
+        this.totalNumberOfRecoveredAnimals = totalNumberOfRecoveredAnimals;
     }
 }

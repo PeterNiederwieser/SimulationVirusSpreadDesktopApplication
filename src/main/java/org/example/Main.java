@@ -23,12 +23,13 @@ public class Main {
         Context context = new Context();
         ChartLines chartLines = new ChartLines();
         ChartLines2 chartLines2 = new ChartLines2();
+        PieChart pieChart = new PieChart();
         DefaultContext defaultContext = new DefaultContext();
         ColorHandler colorHandler = new ColorHandler(context);
         MapPrinter mapPrinter = new MapPrinter(colorHandler);
         PhaseUtils phaseUtils = new PhaseUtils(context);
         MapFieldUtils mapFieldUtils = new MapFieldUtils(context);
-        MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler, mapFieldUtils, chartLines2);
+        MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler, mapFieldUtils, chartLines2, pieChart);
         MapCreator mapCreator = new MapCreator(context);
         List<Behaviour> behaviours = List.of(
                 new Stroll(context, mapFieldUtils),
@@ -41,7 +42,7 @@ public class Main {
                 new Dying(phaseUtils),
                 new InfectionSpread(phaseUtils),
                 new Analysis(),
-                new Diagrams(chartLines2),
+                new Diagrams(chartLines2, pieChart),
                 new Graphic(mapDisplayer),
                 new StepIncrement()
         );

@@ -14,12 +14,15 @@ public class MapDisplayer extends JPanel {
     private final MapFieldUtils mapFieldUtils;
     private final ChartLines2 chartLines2;
 
-    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines2 chartLines2) {
+    private final PieChart pieChart;
+
+    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines2 chartLines2, PieChart pieChart) {
         this.context = context;
         this.MAP_GENERATION_SCALE_FACTOR = context.getMAP_GENERATION_SCALE_FACTOR();
         this.colorHandler = colorHandler;
         this.mapFieldUtils = mapFieldUtils;
         this.chartLines2 = chartLines2;
+        this.pieChart = pieChart;
     }
 
     public void displayMap() {
@@ -37,8 +40,18 @@ public class MapDisplayer extends JPanel {
         JPanel controlPanel = createControlPanel();
         frame.add(controlPanel, BorderLayout.SOUTH);
         frame.setSize(context.getFRAME_WIDTH(), context.getFRAME_HEIGHT());
+        JPanel charts = new JPanel();
+        charts.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 100));
+        charts.setPreferredSize(new Dimension(500,800));
         JPanel chartPanel1 = chartLines2.getChartLinesPanel(context);
-        frame.add(chartPanel1, BorderLayout.EAST);
+        JPanel chartPie = pieChart.getChartLinesPanel(context);
+        BoxLayout boxlayout = new BoxLayout(charts, BoxLayout.Y_AXIS);
+        JLabel jLabelBorder = new JLabel("                               ");
+        charts.setLayout(boxlayout);
+        charts.add(chartPanel1);
+        charts.add(jLabelBorder);
+        charts.add(chartPie);
+        frame.add(charts, BorderLayout.EAST);
         frame.setVisible(true);
         SwingUtilities.invokeLater(this::repaint);
     }

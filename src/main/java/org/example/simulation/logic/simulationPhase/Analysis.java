@@ -6,7 +6,7 @@ import org.example.simulation.data.HealthState;
 public class Analysis implements Phase{
     @Override
     public void perform(Context context) {
-        /*int numberOfInfectedAnimals = context.getPopulation()
+        int numberOfInfectedAnimals = context.getPopulation()
                 .stream()
                 .filter(animal -> animal.getHealthState().equals(HealthState.INFECTED) || animal.getHealthState().equals(HealthState.SEVERELY_ILL))
                 .toList()
@@ -22,7 +22,10 @@ public class Analysis implements Phase{
                 .stream()
                 .filter(animal -> animal.getHealthState().equals(HealthState.RECOVERED))
                 .toList()
-                .size();*/
+                .size();
+        context.setTotalNumberOfInfectedAnimals(numberOfInfectedAnimals);
+        context.setTotalNumberOfHealthyAnimals(numberOfUninfectedAnimals);
+        context.setTotalNumberOfRecoveredAnimals(numberOfRecoveredAnimals);
 
         if (context.getStepNumber() % 24 == 0) {
             context.getInfectionNumbersForCharts().add(context.getNumberOfNewInfectionsInCurrentTimeInterval());
