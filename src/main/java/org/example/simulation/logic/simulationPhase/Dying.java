@@ -2,7 +2,6 @@ package org.example.simulation.logic.simulationPhase;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
-import org.example.simulation.data.HealthState;
 import org.example.simulation.logic.simulationPhase.utils.PhaseUtils;
 
 import java.util.List;

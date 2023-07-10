@@ -54,8 +54,6 @@ public class PieChart {
         plot.setSectionPaint("currently infected", Color.RED);
         plot.setSectionPaint("recovered", Color.YELLOW);
         plot.setSectionPaint("dead", Color.BLACK);
-
-
         return chart;
     }
 }

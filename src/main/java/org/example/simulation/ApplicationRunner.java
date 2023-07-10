@@ -15,13 +15,13 @@ public class ApplicationRunner {
         this.simulator = simulator;
     }
 
-    public void runProgram(Context context, DefaultContext defaultContext) throws IOException {
+    public void runProgram(Context context) throws IOException {
         initializer.initializeSimulation();
         while (true) {
             if (context.isSimulationOngoing()) {
                 if (context.isShouldSimulationRestart()) {
                     context.setShouldSimulationRestart(false);
-                    resetSimulationParameters(context, defaultContext);
+                    resetSimulationParameters(context);
                     initializer.reInitializeSimulation();
                 }
                 simulator.simulate();
@@ -35,7 +35,7 @@ public class ApplicationRunner {
         }
     }
 
-    private void resetSimulationParameters(Context context, DefaultContext defaultContext) {
+    private void resetSimulationParameters(Context context) {
         context.setStepNumber(1);
         context.setPopulation(new ArrayList<>());
         context.setInfectionNumbersForCharts(new ArrayList<>());

@@ -21,7 +21,7 @@ public class Stroll implements Behaviour {
     }
 
     private void performNextStep(Animal animal) {
-        int MAX_TRIALS_OF_DIRECTION_CHANGE = context.getMAX_TRIALS_OF_DIRECTION_CHANGE();
+        int MAX_TRIALS_OF_DIRECTION_CHANGE = context.getMAX_TRIALS_OF_DIRECTION_CHANGE_FOR_SINGLE_MOVE();
         int numberOfTrials = 0;
         int nextX, nextY;
         do {

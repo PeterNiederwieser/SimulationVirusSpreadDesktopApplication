@@ -12,16 +12,16 @@ public class MapDisplayer extends JPanel {
     private final int MAP_GENERATION_SCALE_FACTOR;
     private final ColorHandler colorHandler;
     private final MapFieldUtils mapFieldUtils;
-    private final ChartLines2 chartLines2;
+    private final ChartLines chartLines;
 
     private final PieChart pieChart;
 
-    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines2 chartLines2, PieChart pieChart) {
+    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines chartLines, PieChart pieChart) {
         this.context = context;
         this.MAP_GENERATION_SCALE_FACTOR = context.getMAP_GENERATION_SCALE_FACTOR();
         this.colorHandler = colorHandler;
         this.mapFieldUtils = mapFieldUtils;
-        this.chartLines2 = chartLines2;
+        this.chartLines = chartLines;
         this.pieChart = pieChart;
     }
 
@@ -32,7 +32,6 @@ public class MapDisplayer extends JPanel {
         frame.setResizable(true);
         JPanel panelSpace = new JPanel();
         JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
-        //panelSpace.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 100));
         labelHeading1.setPreferredSize(new Dimension(1000, 50));
         labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
         labelHeading1.setFont(new Font("Calibri", Font.BOLD, 25));
@@ -44,7 +43,7 @@ public class MapDisplayer extends JPanel {
         JPanel charts = new JPanel();
         charts.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 40));
         charts.setPreferredSize(new Dimension(500, 800));
-        JPanel chartPanel1 = chartLines2.getChartLinesPanel(context);
+        JPanel chartPanel1 = chartLines.getChartLinesPanel(context);
         JPanel chartPie = pieChart.getChartLinesPanel(context);
         BoxLayout boxlayout = new BoxLayout(charts, BoxLayout.Y_AXIS);
         JLabel jLabelBorder = new JLabel("                               ");
@@ -253,24 +252,6 @@ public class MapDisplayer extends JPanel {
         ImageIcon imageIcon = new ImageIcon("map.png");
         Image image = imageIcon.getImage();
         graphics.drawImage(image, 0, 0, null);
-        /*SurfaceType[][] map = context.getMap();
-        int MAP_HEIGHT = map.length;
-        int MAP_WIDTH = map[0].length;
-        for (int x = 0; x < MAP_HEIGHT; x++) {
-            for (int y = 0; y < MAP_WIDTH; y++) {
-                paintSurfaceType(graphics, x, y);
-            }
-        }*/
-    }
-
-    private void paintSurfaceType(Graphics graphics, int x, int y) {
-        int xScaled = x * MAP_GENERATION_SCALE_FACTOR;
-        int yScaled = y * MAP_GENERATION_SCALE_FACTOR;
-        SurfaceType[][] map = context.getMap();
-        SurfaceType surfaceType = map[x][y];
-        Color color = colorHandler.getColorForSurfaceType(surfaceType);
-        graphics.setColor(color);
-        graphics.fillRect(xScaled, yScaled, MAP_GENERATION_SCALE_FACTOR, MAP_GENERATION_SCALE_FACTOR);
     }
 
     public void displayPopulation(Graphics graphics) {
@@ -284,5 +265,4 @@ public class MapDisplayer extends JPanel {
             graphics.fillOval(x, y, ANIMAL_SIZE, ANIMAL_SIZE);
         });
     }
-
 }
