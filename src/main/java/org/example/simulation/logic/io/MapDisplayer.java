@@ -30,19 +30,20 @@ public class MapDisplayer extends JPanel {
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setLayout(new BorderLayout());
         frame.setResizable(true);
+        JPanel panelSpace = new JPanel();
         JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
-        //labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
-        labelHeading1.setFont(new Font("Calibri", Font.BOLD, 18));
-        frame.add(labelHeading1, BorderLayout.NORTH);
+        //panelSpace.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 100));
+        labelHeading1.setPreferredSize(new Dimension(1000, 50));
+        labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
+        labelHeading1.setFont(new Font("Calibri", Font.BOLD, 25));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-        frame.add(this, BorderLayout.CENTER);
         JPanel controlPanel = createControlPanel();
         frame.add(controlPanel, BorderLayout.SOUTH);
         frame.setSize(context.getFRAME_WIDTH(), context.getFRAME_HEIGHT());
         JPanel charts = new JPanel();
-        charts.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 100));
-        charts.setPreferredSize(new Dimension(500,800));
+        charts.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 40));
+        charts.setPreferredSize(new Dimension(500, 800));
         JPanel chartPanel1 = chartLines2.getChartLinesPanel(context);
         JPanel chartPie = pieChart.getChartLinesPanel(context);
         BoxLayout boxlayout = new BoxLayout(charts, BoxLayout.Y_AXIS);
@@ -54,11 +55,13 @@ public class MapDisplayer extends JPanel {
         frame.add(charts, BorderLayout.EAST);
         frame.setVisible(true);
         SwingUtilities.invokeLater(this::repaint);
+        frame.add(this, BorderLayout.CENTER);
+        frame.add(labelHeading1, BorderLayout.NORTH);
     }
 
     private JPanel createControlPanel() {
         JPanel controlPanel = new JPanel();
-        controlPanel.setPreferredSize(new Dimension(800, 300));
+        controlPanel.setPreferredSize(new Dimension(800, 200));
         controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 10));
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
         JLabel labelHeading2 = new JLabel("Adjust some simulation parameters:");

@@ -50,7 +50,7 @@ public class PieChart {
                 false,
                 false);
         PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setSectionPaint("not infected yet", Color.BLUE);
+        plot.setSectionPaint("not infected yet", Color.decode("#38f5f5"));
         plot.setSectionPaint("currently infected", Color.RED);
         plot.setSectionPaint("recovered", Color.YELLOW);
         plot.setSectionPaint("dead", Color.BLACK);
