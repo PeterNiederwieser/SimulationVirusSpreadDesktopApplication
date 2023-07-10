@@ -2,13 +2,14 @@ package org.example.simulation.logic.io;
 
 import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
+import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+@Component
 public class MapPrinter {
     private final ColorHandler colorHandler;
 

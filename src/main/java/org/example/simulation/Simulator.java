@@ -4,10 +4,11 @@ import org.example.simulation.logic.initialisation.Initializer;
 import org.example.simulation.logic.io.MapCreator;
 import org.example.simulation.data.Context;
 import org.example.simulation.logic.simulationPhase.Phase;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-
+@Service
 public class Simulator {
     private final Context context;
     private final List<Phase> phases;

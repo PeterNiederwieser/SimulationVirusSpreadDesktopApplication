@@ -3,9 +3,10 @@ package org.example.simulation.logic.utils;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class MapFieldUtils {
     private final Context context;
 

@@ -7,10 +7,11 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
-
+@Component
 public class PieChart {
     private DefaultPieDataset dataset;
     private JFreeChart chart;

@@ -1,11 +1,13 @@
 package org.example.simulation.data;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 @Data
+@Component
 public class Context {
     private float PROBABILITY_OF_INFECTION = 1.0F;
     private float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;

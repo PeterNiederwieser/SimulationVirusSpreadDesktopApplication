@@ -3,9 +3,10 @@ package org.example.simulation.logic.simulationPhase.utils;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.HealthState;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class PhaseUtils {
     private final Context context;
 

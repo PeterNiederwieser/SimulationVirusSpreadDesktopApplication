@@ -3,9 +3,10 @@ package org.example.simulation.logic.io;
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.SurfaceType;
 import org.example.simulation.data.Context;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
-
+@Component
 public class ColorHandler {
     private final Context context;
 

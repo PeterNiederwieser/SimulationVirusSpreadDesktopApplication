@@ -2,11 +2,12 @@ package org.example.simulation.logic.io;
 
 import org.example.simulation.data.*;
 import org.example.simulation.logic.utils.MapFieldUtils;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-
+@Component
 public class MapDisplayer extends JPanel {
     private final Context context;
     private final int MAP_GENERATION_SCALE_FACTOR;

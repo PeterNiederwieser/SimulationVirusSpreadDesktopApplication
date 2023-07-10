@@ -5,10 +5,12 @@ import org.example.simulation.logic.io.MapCreator;
 import org.example.simulation.logic.io.MapDisplayer;
 import org.example.simulation.logic.io.MapPrinter;
 import org.example.simulation.logic.utils.MapFieldUtils;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
+@Service
 public class Initializer {
     private final Context context;
     private final MapCreator mapCreator;
@@ -25,6 +27,7 @@ public class Initializer {
     }
 
     public void initializeSimulation() throws IOException {
+        System.out.println("initialisation");
         String filePathOfImage = context.getFilePathOfMapImage();
         mapCreator.generateMapFromImage(filePathOfImage);
         mapPrinter.printMap(context);
