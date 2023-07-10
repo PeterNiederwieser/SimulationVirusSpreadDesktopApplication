@@ -3,20 +3,22 @@ package org.example.simulation.data;
 public class Animal {
     private int x;
     private int y;
+    private float max_speed;
     private float velocityX;
     private float velocityY;
     private HealthState healthState;
-    private MotionType motionType;
+    private BehaviourType behaviourType;
     private int momentOfInfection;
     private int startOfSevereIllness;
     private int timeOfPossibleDeathAfterInfection;
     private boolean isGettingSeverelyIll;
 
-    public Animal(int x, int y, HealthState healthState, MotionType motionType, int timeOfPossibleDeathAfterInfection, boolean isDyingInCaseOfInfection) {
+    public Animal(int x, int y, float max_speed, HealthState healthState, BehaviourType behaviourType, int timeOfPossibleDeathAfterInfection, boolean isDyingInCaseOfInfection) {
         this.x = x;
         this.y = y;
+        this.max_speed = max_speed;
         this.healthState = healthState;
-        this.motionType = motionType;
+        this.behaviourType = behaviourType;
         this.timeOfPossibleDeathAfterInfection = timeOfPossibleDeathAfterInfection;
         this.isGettingSeverelyIll = isDyingInCaseOfInfection;
     }
@@ -61,10 +63,6 @@ public class Animal {
         this.healthState = healthState;
     }
 
-    public MotionType getMotionType() {
-        return motionType;
-    }
-
     public int getMomentOfInfection() {
         return momentOfInfection;
     }
@@ -77,8 +75,16 @@ public class Animal {
         return timeOfPossibleDeathAfterInfection;
     }
 
+    public void setTimeOfPossibleDeathAfterInfection(int timeOfPossibleDeathAfterInfection) {
+        this.timeOfPossibleDeathAfterInfection = timeOfPossibleDeathAfterInfection;
+    }
+
     public boolean isGettingSeverelyIll() {
         return isGettingSeverelyIll;
+    }
+
+    public void setGettingSeverelyIll(boolean gettingSeverelyIll) {
+        isGettingSeverelyIll = gettingSeverelyIll;
     }
 
     public int getStartOfSevereIllness() {
@@ -87,5 +93,21 @@ public class Animal {
 
     public void setStartOfSevereIllness(int startOfSevereIllness) {
         this.startOfSevereIllness = startOfSevereIllness;
+    }
+
+    public float getMax_speed() {
+        return max_speed;
+    }
+
+    public void setMax_speed(float max_speed) {
+        this.max_speed = max_speed;
+    }
+
+    public BehaviourType getBehaviourType() {
+        return behaviourType;
+    }
+
+    public void setBehaviourType(BehaviourType behaviourType) {
+        this.behaviourType = behaviourType;
     }
 }

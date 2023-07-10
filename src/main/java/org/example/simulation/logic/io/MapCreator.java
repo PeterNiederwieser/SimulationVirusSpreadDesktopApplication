@@ -1,4 +1,4 @@
-package org.example.simulation.logic.map;
+package org.example.simulation.logic.io;
 
 import org.example.simulation.data.Context;
 import org.example.simulation.data.SurfaceType;

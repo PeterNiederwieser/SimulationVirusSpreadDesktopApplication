@@ -1,18 +1,16 @@
-package org.example.simulation.logic.animalBehaviour.types;
+package org.example.simulation.logic.behaviour;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
-import org.example.simulation.data.MotionType;
+import org.example.simulation.data.BehaviourType;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 public class Stroll implements Behaviour {
     private final Context context;
     private final MapFieldUtils mapFieldUtils;
-    private final int MAX_ANIMAL_SPEED;
 
     public Stroll(Context context, MapFieldUtils mapFieldUtils) {
         this.context = context;
-        this.MAX_ANIMAL_SPEED = context.getMAX_ANIMAL_SPEED();
         this.mapFieldUtils = mapFieldUtils;
     }
 
@@ -27,8 +25,8 @@ public class Stroll implements Behaviour {
         int numberOfTrials = 0;
         int nextX, nextY;
         do {
-            nextX = (int) ((float) animal.getX() + animal.getVelocityX());
-            nextY = (int) ((float) animal.getY() + animal.getVelocityY());
+            nextX = Math.round((float) animal.getX() + animal.getVelocityX());
+            nextY = Math.round((float) animal.getY() + animal.getVelocityY());
             if (isMoveInCurrentDirectionPossible(animal, nextX, nextY)) {
                 animal.setX(nextX);
                 animal.setY(nextY);
@@ -41,9 +39,11 @@ public class Stroll implements Behaviour {
     }
 
     private void setNewRandomVelocity(Animal animal) {
-        float nextVelocityX = Math.round(Math.random() * MAX_ANIMAL_SPEED * 2) - MAX_ANIMAL_SPEED;
+        float maxAnimalSpeed = animal.getMax_speed();
+        float speed = (float) Math.random() * (maxAnimalSpeed - context.getMIN_ANIMAL_SPEED()) + context.getMIN_ANIMAL_SPEED();
+        float nextVelocityX = (float) (Math.random() * speed * 2) - speed;
         int randomSign = Math.random() < 0.5 ? 1 : -1;
-        float nextVelocityY = (float) Math.sqrt(Math.pow(MAX_ANIMAL_SPEED, 2) - Math.pow(nextVelocityX, 2)) * randomSign;
+        float nextVelocityY = (float) Math.sqrt(Math.pow(speed, 2) - Math.pow(nextVelocityX, 2)) * randomSign;
         animal.setVelocityX(nextVelocityX);
         animal.setVelocityY(nextVelocityY);
     }
@@ -65,6 +65,6 @@ public class Stroll implements Behaviour {
 
     @Override
     public boolean matches(Animal animal) {
-        return animal.getMotionType().equals(MotionType.STROLL);
+        return animal.getBehaviourType().equals(BehaviourType.STROLL);
     }
 }

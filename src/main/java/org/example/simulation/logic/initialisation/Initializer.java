@@ -1,12 +1,12 @@
 package org.example.simulation.logic.initialisation;
 
 import org.example.simulation.data.*;
-import org.example.simulation.logic.map.MapCreator;
-import org.example.simulation.logic.map.MapDisplayer;
+import org.example.simulation.logic.io.MapCreator;
+import org.example.simulation.logic.io.MapDisplayer;
+import org.example.simulation.logic.io.MapPrinter;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Initializer {
@@ -14,21 +14,28 @@ public class Initializer {
     private final MapCreator mapCreator;
     private final MapDisplayer mapDisplayer;
     private final MapFieldUtils mapFieldUtils;
-    private List<Position> initialPositions = new ArrayList<>();
+    private final MapPrinter mapPrinter;
 
-    public Initializer(Context context, MapCreator mapCreator, MapDisplayer mapDisplayer, MapFieldUtils mapFieldUtils) {
+    public Initializer(Context context, MapCreator mapCreator, MapDisplayer mapDisplayer, MapFieldUtils mapFieldUtils, MapPrinter mapPrinter) {
         this.context = context;
         this.mapCreator = mapCreator;
         this.mapDisplayer = mapDisplayer;
         this.mapFieldUtils = mapFieldUtils;
+        this.mapPrinter = mapPrinter;
     }
 
     public void initializeSimulation() throws IOException {
         String filePathOfImage = context.getFilePathOfMapImage();
         mapCreator.generateMapFromImage(filePathOfImage);
+        mapPrinter.printMap(context);
         setInitializedPopulation();
         initializeStartingStateOfInfections();
         mapDisplayer.displayMap();
+    }
+
+    public void reInitializeSimulation() {
+        setInitializedPopulation();
+        initializeStartingStateOfInfections();
     }
 
     private void initializeStartingStateOfInfections() {
@@ -46,7 +53,7 @@ public class Initializer {
             Position position = getRandomInitialPosition();
             int timeOfPossibleSevereIllnessAfterInfection = Math.max((int) Math.round(Math.random() * context.getTIME_OF_RECOVERY()), context.getMIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION());
             boolean isGettingSeverelyIll = Math.random() <= context.getPROBABILITY_OF_FATAL_INFECTION_COURSE();
-            population.add(new Animal(position.x(), position.y(), HealthState.HEALTHY, MotionType.STROLL, timeOfPossibleSevereIllnessAfterInfection, isGettingSeverelyIll));
+            population.add(new Animal(position.x(), position.y(), context.getMAX_ANIMAL_SPEED(), HealthState.HEALTHY, BehaviourType.STROLL, timeOfPossibleSevereIllnessAfterInfection, isGettingSeverelyIll));
         }
     }
 

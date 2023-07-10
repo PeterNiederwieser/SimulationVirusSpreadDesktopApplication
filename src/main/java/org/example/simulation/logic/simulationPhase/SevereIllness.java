@@ -1,6 +1,7 @@
 package org.example.simulation.logic.simulationPhase;
 
 import org.example.simulation.data.Animal;
+import org.example.simulation.data.BehaviourType;
 import org.example.simulation.data.Context;
 import org.example.simulation.data.HealthState;
 import org.example.simulation.logic.simulationPhase.utils.PhaseUtils;
@@ -20,10 +21,16 @@ public class SevereIllness implements Phase {
         List<Animal> infectedAnimals = phaseUtils.getInfectedAnimals();
         infectedAnimals.forEach(animal -> {
             if (isAnimalGettingSeverelyIll(animal, context)) {
-                animal.setHealthState(HealthState.SEVERELY_ILL);
-                animal.setStartOfSevereIllness(context.getStepNumber());
+                changeStatesForSevereIllness(context, animal);
             }
         });
+    }
+
+    private static void changeStatesForSevereIllness(Context context, Animal animal) {
+        animal.setHealthState(HealthState.SEVERELY_ILL);
+        animal.setStartOfSevereIllness(context.getStepNumber());
+        animal.setMax_speed(context.getMAX_SEVERELY_ILL_ANIMAL_SPEED());
+        animal.setBehaviourType(BehaviourType.REST);
     }
 
     private boolean isAnimalGettingSeverelyIll(Animal animal, Context context) {

@@ -2,7 +2,7 @@ package org.example.simulation.logic.simulationPhase;
 
 import org.example.simulation.data.Animal;
 import org.example.simulation.data.Context;
-import org.example.simulation.logic.animalBehaviour.types.Behaviour;
+import org.example.simulation.logic.behaviour.Behaviour;
 
 import java.util.List;
 import java.util.NoSuchElementException;

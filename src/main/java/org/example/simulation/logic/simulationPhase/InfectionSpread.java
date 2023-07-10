@@ -23,17 +23,19 @@ public class InfectionSpread implements Phase {
                     .filter(animal -> animal.getX() != infectedAnimal.getX() && animal.getY() != infectedAnimal.getY())
                     .forEach(otherAnimal -> {
                         if (isOtherAnimalWithinInfectionRadius(otherAnimal, infectedAnimal, context) && otherAnimal.getHealthState().equals(HealthState.HEALTHY)) {
-                            changeHealthStateInCaseOfInfection(otherAnimal, context);
+                            changeStatesInCaseOfInfection(otherAnimal, context);
                         }
                     });
         });
     }
 
-    private void changeHealthStateInCaseOfInfection(Animal animal, Context context) {
+    private void changeStatesInCaseOfInfection(Animal animal, Context context) {
         float PROBABILITY_OF_INFECTION = context.getPROBABILITY_OF_INFECTION();
         if (Math.random() <= PROBABILITY_OF_INFECTION) {
             animal.setHealthState(HealthState.INFECTED);
+            context.setNumberOfNewInfectionsInCurrentTimeInterval(context.getNumberOfNewInfectionsInCurrentTimeInterval()+1);
             animal.setMomentOfInfection(context.getStepNumber());
+            animal.setMax_speed(context.getMAX_INFECTED_ANIMAL_SPEED());
         }
     }
 
@@ -43,7 +45,6 @@ public class InfectionSpread implements Phase {
     }
 
     public double getDistanceBetweenAnimals(Animal animal1, Animal animal2, Context context) {
-        int ANIMAL_SIZE = context.getANIMAL_SIZE();
         return Math.sqrt(Math.pow(animal1.getX() - animal2.getX(), 2) + Math.pow(animal1.getY() - animal2.getY(), 2));
     }
 }
