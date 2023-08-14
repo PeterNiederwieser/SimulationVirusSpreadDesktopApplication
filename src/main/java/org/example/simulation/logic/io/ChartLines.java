@@ -21,16 +21,12 @@ public class ChartLines {
     private XYSeriesCollection dataset;
     private JFreeChart chart;
 
-    public void createChart(Context context) {
+    public JPanel getChartLinesPanel(Context context) {
         dataset = createDataset(context);
         chart = createChart(dataset);
-        JFrame frame = new JFrame();
         JPanel chartPanel = new ChartPanel(chart);
-        frame.add(chartPanel, BorderLayout.CENTER);
-        frame.setSize(700, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        chartPanel.setSize(350, 350);
+        return chartPanel;
     }
 
     public void updateChart(Context context) {
@@ -81,10 +77,10 @@ public class ChartLines {
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
         renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesPaint(1, Color.GREEN);
+        renderer.setSeriesPaint(1, Color.BLACK);
 
         renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(1, new BasicStroke(3.0f));
+        renderer.setSeriesStroke(1, new BasicStroke(4.0f));
 
         plot.setOutlinePaint(Color.BLACK);
         plot.setOutlineStroke(new BasicStroke(2.0f));
