@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class MapPrinter {
-    int PIXEL_SCALE = 50;
     private final ColorHandler colorHandler;
 
     public MapPrinter(ColorHandler colorHandler) {
