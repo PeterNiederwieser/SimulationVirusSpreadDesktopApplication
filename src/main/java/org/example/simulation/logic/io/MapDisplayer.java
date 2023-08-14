@@ -32,7 +32,6 @@ public class MapDisplayer extends JPanel {
         frame.setResizable(true);
         JPanel panelSpace = new JPanel();
         JLabel labelHeading1 = new JLabel("Virus Spread Simulation");
-        //panelSpace.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 100));
         labelHeading1.setPreferredSize(new Dimension(1000, 50));
         labelHeading1.setLayout(new FlowLayout(FlowLayout.CENTER));
         labelHeading1.setFont(new Font("Calibri", Font.BOLD, 25));
@@ -177,11 +176,9 @@ public class MapDisplayer extends JPanel {
     }
 
     private void actualizeInfections(int newNumberOfInfections) {
-        System.out.println("newNumberOfInfections = " + newNumberOfInfections);
         int actualNumberOfInfections = context.getPopulation().stream()
                 .filter(animal -> animal.getHealthState().equals(HealthState.INFECTED))
                 .toList().size();
-        System.out.println("actualNumberOfInfections = " + actualNumberOfInfections);
         int difference = newNumberOfInfections - actualNumberOfInfections;
         if (difference < 0) {
             for (int i = 1; i <= difference * (-1); i++) {
@@ -253,14 +250,6 @@ public class MapDisplayer extends JPanel {
         ImageIcon imageIcon = new ImageIcon("map.png");
         Image image = imageIcon.getImage();
         graphics.drawImage(image, 0, 0, null);
-        /*SurfaceType[][] map = context.getMap();
-        int MAP_HEIGHT = map.length;
-        int MAP_WIDTH = map[0].length;
-        for (int x = 0; x < MAP_HEIGHT; x++) {
-            for (int y = 0; y < MAP_WIDTH; y++) {
-                paintSurfaceType(graphics, x, y);
-            }
-        }*/
     }
 
     private void paintSurfaceType(Graphics graphics, int x, int y) {
@@ -284,5 +273,4 @@ public class MapDisplayer extends JPanel {
             graphics.fillOval(x, y, ANIMAL_SIZE, ANIMAL_SIZE);
         });
     }
-
 }
