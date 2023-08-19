@@ -51,7 +51,7 @@ public class Context {
     private String textForButtonPause = "Stop";
     private int numberOfAnimalDeathsInCurrentTimeInterval;
     private int numberOfNewInfectionsInCurrentTimeInterval;
-    private boolean isChartDataShown = false;
+    private boolean isChartDataShown = true;
 
     private int totalNumberOfInfectedAnimals;
     private int totalNumberOfHealthyAnimals;
