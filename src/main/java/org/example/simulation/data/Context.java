@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Context {
-    private float PROBABILITY_OF_INFECTION = 1.0F;
+    private float PROBABILITY_OF_INFECTION = 0.8F;
     private float PROBABILITY_OF_FATAL_INFECTION_COURSE = 0.4F;
     private final int MIN_TIME_FOR_SEVERE_ILLNESS_AFTER_INFECTION = 100;
     private final int DURATION_OF_SEVERE_ILLNESS = 200;
     private final int TIME_OF_RECOVERY = 200;
-    private int NUMBER_OF_ANIMALS = 200;
+    private int NUMBER_OF_ANIMALS = 400;
     private int NUMBER_OF_INITIAL_INFECTIONS = 20;
     private final int INFECTION_RADIUS = 10;
     private final int ANIMAL_SIZE = 10;
