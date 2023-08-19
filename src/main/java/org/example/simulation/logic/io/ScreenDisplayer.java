@@ -62,7 +62,7 @@ public class ScreenDisplayer extends JPanel {
         controlPanel.setPreferredSize(new Dimension(800, 200));
         controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 10));
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
-        JLabel labelHeading2 = new JLabel("Adjust some simulation parameters:");
+        JLabel labelHeading2 = new JLabel("Adjust some simulation parameters before you start the simulation:");
         labelHeading2.setLayout(new FlowLayout(FlowLayout.CENTER));
         labelHeading2.setFont(new Font("Calibri", Font.BOLD, 18));
         controlPanel.add(labelHeading2);
@@ -100,7 +100,7 @@ public class ScreenDisplayer extends JPanel {
         panelSliderFirstRow.add(sliderInitialInfections);
         controlPanel.add(panelSliderFirstRow);
 
-        JSlider sliderInfectiousness = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_INFECTION() * 100);
+        JSlider sliderInfectiousness = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) (context.getPROBABILITY_OF_INFECTION() * 100));
         sliderInfectiousness.setMinorTickSpacing(10);
         sliderInfectiousness.setMajorTickSpacing(20);
         sliderInfectiousness.setPaintTicks(true);
@@ -116,7 +116,7 @@ public class ScreenDisplayer extends JPanel {
         panelSliderSecondRow.add(labelInfectiousness);
         panelSliderSecondRow.add(sliderInfectiousness);
 
-        JSlider sliderLethality = new JSlider(JSlider.HORIZONTAL, 0, 100, (int) context.getPROBABILITY_OF_FATAL_INFECTION_COURSE() * 100);
+        JSlider sliderLethality = new JSlider(JSlider.HORIZONTAL, 10, 100, (int) (context.getPROBABILITY_OF_FATAL_INFECTION_COURSE() * 100));
         sliderLethality.setMinorTickSpacing(10);
         sliderLethality.setMajorTickSpacing(20);
         sliderLethality.setPaintTicks(true);
