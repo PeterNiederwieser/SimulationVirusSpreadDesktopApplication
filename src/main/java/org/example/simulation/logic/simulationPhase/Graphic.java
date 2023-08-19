@@ -1,17 +1,17 @@
 package org.example.simulation.logic.simulationPhase;
 
 import org.example.simulation.data.Context;
-import org.example.simulation.logic.io.MapDisplayer;
+import org.example.simulation.logic.io.ScreenDisplayer;
 
 public class Graphic implements Phase {
-    private final MapDisplayer mapDisplayer;
+    private final ScreenDisplayer screenDisplayer;
 
-    public Graphic(MapDisplayer mapDisplayer) {
-        this.mapDisplayer = mapDisplayer;
+    public Graphic(ScreenDisplayer screenDisplayer) {
+        this.screenDisplayer = screenDisplayer;
     }
 
     @Override
     public void perform(Context context) {
-        mapDisplayer.repaint();
+        screenDisplayer.repaint();
     }
 }

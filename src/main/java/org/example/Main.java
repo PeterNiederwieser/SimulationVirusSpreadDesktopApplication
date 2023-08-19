@@ -26,7 +26,7 @@ public class Main {
         MapPrinter mapPrinter = new MapPrinter(colorHandler);
         PhaseUtils phaseUtils = new PhaseUtils(context);
         MapFieldUtils mapFieldUtils = new MapFieldUtils(context);
-        MapDisplayer mapDisplayer = new MapDisplayer(context, colorHandler, mapFieldUtils, chartLines, pieChart);
+        ScreenDisplayer screenDisplayer = new ScreenDisplayer(context, colorHandler, mapFieldUtils, chartLines, pieChart);
         MapCreator mapCreator = new MapCreator(context);
         List<Behaviour> behaviours = List.of(
                 new Stroll(context, mapFieldUtils),
@@ -40,10 +40,10 @@ public class Main {
                 new InfectionSpread(phaseUtils),
                 new Analysis(),
                 new Diagrams(chartLines, pieChart),
-                new Graphic(mapDisplayer),
+                new Graphic(screenDisplayer),
                 new StepIncrement()
         );
-        Initializer initializer = new Initializer(context, mapCreator, mapDisplayer, mapFieldUtils, mapPrinter);
+        Initializer initializer = new Initializer(context, mapCreator, screenDisplayer, mapFieldUtils, mapPrinter);
         Simulator simulator = new Simulator(context, phases);
         ApplicationRunner applicationRunner = new ApplicationRunner(initializer, simulator);
         applicationRunner.runProgram(context);

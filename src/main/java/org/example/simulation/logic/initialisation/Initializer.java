@@ -2,7 +2,7 @@ package org.example.simulation.logic.initialisation;
 
 import org.example.simulation.data.*;
 import org.example.simulation.logic.io.MapCreator;
-import org.example.simulation.logic.io.MapDisplayer;
+import org.example.simulation.logic.io.ScreenDisplayer;
 import org.example.simulation.logic.io.MapPrinter;
 import org.example.simulation.logic.utils.MapFieldUtils;
 
@@ -12,14 +12,14 @@ import java.util.List;
 public class Initializer {
     private final Context context;
     private final MapCreator mapCreator;
-    private final MapDisplayer mapDisplayer;
+    private final ScreenDisplayer screenDisplayer;
     private final MapFieldUtils mapFieldUtils;
     private final MapPrinter mapPrinter;
 
-    public Initializer(Context context, MapCreator mapCreator, MapDisplayer mapDisplayer, MapFieldUtils mapFieldUtils, MapPrinter mapPrinter) {
+    public Initializer(Context context, MapCreator mapCreator, ScreenDisplayer screenDisplayer, MapFieldUtils mapFieldUtils, MapPrinter mapPrinter) {
         this.context = context;
         this.mapCreator = mapCreator;
-        this.mapDisplayer = mapDisplayer;
+        this.screenDisplayer = screenDisplayer;
         this.mapFieldUtils = mapFieldUtils;
         this.mapPrinter = mapPrinter;
     }
@@ -30,7 +30,7 @@ public class Initializer {
         mapPrinter.printMap(context);
         setInitializedPopulation();
         initializeStartingStateOfInfections();
-        mapDisplayer.displayMap();
+        screenDisplayer.displayScreen();
     }
 
     public void reInitializeSimulation() {
