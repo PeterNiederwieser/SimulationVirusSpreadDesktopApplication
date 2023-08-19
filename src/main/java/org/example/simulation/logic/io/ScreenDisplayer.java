@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class MapDisplayer extends JPanel {
+public class ScreenDisplayer extends JPanel {
     private final Context context;
     private final int MAP_GENERATION_SCALE_FACTOR;
     private final ColorHandler colorHandler;
@@ -16,7 +16,7 @@ public class MapDisplayer extends JPanel {
 
     private final PieChart pieChart;
 
-    public MapDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines chartLines, PieChart pieChart) {
+    public ScreenDisplayer(Context context, ColorHandler colorHandler, MapFieldUtils mapFieldUtils, ChartLines chartLines, PieChart pieChart) {
         this.context = context;
         this.MAP_GENERATION_SCALE_FACTOR = context.getMAP_GENERATION_SCALE_FACTOR();
         this.colorHandler = colorHandler;
@@ -25,7 +25,7 @@ public class MapDisplayer extends JPanel {
         this.pieChart = pieChart;
     }
 
-    public void displayMap() {
+    public void displayScreen() {
         setDoubleBuffered(true);
         JFrame frame = new JFrame("Simulation of virus spreading");
         frame.setLayout(new BorderLayout());
@@ -134,12 +134,6 @@ public class MapDisplayer extends JPanel {
         JPanel panelButtons = new JPanel();
         panelButtons.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        JLabel labelCheckboxCharts = new JLabel("Show Chart Data                                        ");
-        JCheckBox checkBoxCharts = new JCheckBox();
-        checkBoxCharts.addActionListener(event -> {
-            context.setChartDataShown(!context.isChartDataShown());
-        });
-
         JButton buttonStart = new JButton("Start");
         buttonStart.addActionListener(event -> {
             if (!context.isSimulationOngoing()) {
@@ -164,8 +158,6 @@ public class MapDisplayer extends JPanel {
         });
         buttonEnd.setPreferredSize(new Dimension(100, 25));
 
-        panelButtons.add(checkBoxCharts);
-        panelButtons.add(labelCheckboxCharts);
         panelButtons.add(buttonStart);
         panelButtons.add(buttonPause);
         panelButtons.add(buttonEnd);
