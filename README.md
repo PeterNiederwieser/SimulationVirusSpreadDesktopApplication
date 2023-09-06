@@ -6,7 +6,7 @@ There are four slide bars for the user to determine four important simulation pa
 
 ![Bildschirmfoto vom 2023-09-06 08-14-34](https://github.com/PeterNiederwieser/SimulationVirusSpreadDesktopApplication/assets/112017284/3079528c-cc06-49e3-8cd2-d8e0edf76008)
 
-On the upper left side there is the map showing the region, where the animals live, and each animal is displayed as a coloured circle. The color indicates the health or infection status of the respective animal (light blue ... healthy, yellow ... recovered and immune, red ... infected, black ... severely ill). 
+On the upper left side there is the map showing the region, where the animals live, and each animal is displayed as a coloured circle. The movement of the animals can be tracked on the screen during the simulation. The color of an animal indicates its health or infection status (light blue ... healthy, yellow ... recovered and immune, red ... infected, black ... severely ill). 
 
 There are two charts on the upper right side displaying important data of the virus spread. If the simulation is running, these charts get updated regularly within short time intervals. 
 
